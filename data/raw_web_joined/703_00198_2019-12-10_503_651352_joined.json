@@ -1,0 +1,72 @@
+[
+  {
+    "web": "$000.05 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009203"
+  },
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "Applegate Natural Uncured Turkey Bacon",
+    "raw": "APGT FRM BACON",
+    "id": "0002531712000"
+  },
+  {
+    "web": "Beyond Meat Original Brat Plant-Based Sausage Links",
+    "raw": "BYND SSG BRAT",
+    "id": "0085262900477"
+  },
+  {
+    "web": "Boar's Head Blazing Buffalo Chicken Sausage",
+    "raw": "BFLO CKN SAUSAGE",
+    "id": "0004242114014"
+  },
+  {
+    "web": "Fresh Gourmet Crispy Red Peppers",
+    "raw": "FGOR PEPPERS",
+    "id": "0078735917519"
+  },
+  {
+    "web": "Kerrygold Savory Cheddar Cheese Slices",
+    "raw": "KRGD SLICED CHEESE",
+    "id": "0076770701330"
+  },
+  {
+    "web": "Oscar Mayer Natural Smoked Uncured Bacon",
+    "raw": "OM BACON",
+    "id": "0004470002263"
+  },
+  {
+    "web": "Sargento Natural Colby-Pepper Jack Deli Style Slices 11 Count",
+    "raw": "SARGENTO CHEESE",
+    "id": "0004610000268"
+  },
+  {
+    "web": "Simple Truth Organic™ Baby Kale",
+    "raw": "STO KALE BABY ORG",
+    "id": "0001111091727"
+  },
+  {
+    "web": "Simple Truth Organic™ Baby Spring Mix",
+    "raw": "STO BABY SPRING MX",
+    "id": "0001111091131"
+  },
+  {
+    "web": "SmartWater Vapor Distilled",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616250700"
+  },
+  {
+    "web": "Sparkling Ice Kiwi Strawberry Sparkling Water",
+    "raw": "SPARKLING ICE",
+    "id": "0001657191032"
+  },
+  {
+    "web": "Sparkling Ice Pink Grapefruit Sparkling Water",
+    "raw": "SPARKLING ICE",
+    "id": "0001657191037"
+  }
+]
