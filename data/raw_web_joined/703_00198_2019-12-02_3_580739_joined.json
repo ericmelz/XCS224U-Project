@@ -1,0 +1,82 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "Arrowhead Ice",
+    "raw": "ARROWHEAD ICE",
+    "id": "0003396200957"
+  },
+  {
+    "web": "Avocado - Small",
+    "raw": "AVOCADOS",
+    "id": "0000000004046"
+  },
+  {
+    "web": "Beyond Meat Hot Italian Plant-Based Sausage",
+    "raw": "BYND SSG HT ITLN",
+    "id": "0085262900475"
+  },
+  {
+    "web": "Beyond Meat The Beyond Burger Plant-Based Burger Patties",
+    "raw": "THE BEYOND BURGER",
+    "id": "0085262900458"
+  },
+  {
+    "web": "Crystal Geyser Alpine Spring Water",
+    "raw": "CGYS ALPINE",
+    "id": "0007514000515"
+  },
+  {
+    "web": "Fresh Gourmet Crispy Red Peppers",
+    "raw": "FGOR PEPPERS",
+    "id": "0078735917519"
+  },
+  {
+    "web": "Kroger® Romaine Leaf Single Cut Leaf",
+    "raw": "KRO ROMAINE",
+    "id": "0001111018168"
+  },
+  {
+    "web": "Nut Pods French Vanilla Unsweetened Dairy-Free Creamer",
+    "raw": "NUTPODS CREAMER",
+    "id": "0086840800022"
+  },
+  {
+    "web": "Onions - Red - Jumbo",
+    "raw": "ONIONS RED JUMBO",
+    "id": "0000000004082"
+  },
+  {
+    "web": "Organic - Cucumber - English",
+    "raw": "CUC ORG RPC",
+    "id": "0000000094593"
+  },
+  {
+    "web": "Organic - Leaf Lettuce - Red",
+    "raw": "RED LEAF ORG",
+    "id": "0000000094075"
+  },
+  {
+    "web": "Private Selection™ Angus Beef Ground Chuck Patties 80% Lean",
+    "raw": "00SL BF CHCK PATTY",
+    "id": "0001111063461"
+  },
+  {
+    "web": "Private Selection™ Campari Tomatoes",
+    "raw": "PRSL TOMATO",
+    "id": "0001111091687"
+  },
+  {
+    "web": "SmartWater Vapor Distilled",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616250700"
+  }
+]

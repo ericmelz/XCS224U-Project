@@ -1,0 +1,107 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "Beyond Meat Hot Italian Plant-Based Sausage",
+    "raw": "BYND SSG HT ITLN",
+    "id": "0085262900475"
+  },
+  {
+    "web": "Crystal Geyser Alpine Spring Water",
+    "raw": "CGYS ALPINE",
+    "id": "0007514000515"
+  },
+  {
+    "web": "Kroger® Select-A-Sheet Double Paper Towels",
+    "raw": "KRO HMS DBL SAS",
+    "id": "0001111004016"
+  },
+  {
+    "web": "McCormick Gourmet Organic Rubbed Sage",
+    "raw": "MCCO SAGE",
+    "id": "0005210082794"
+  },
+  {
+    "web": "Organic - Parsley - Curly",
+    "raw": "PARSLEY ORG",
+    "id": "0000000094899"
+  },
+  {
+    "web": "Pacific Unsweetened Almond Milk",
+    "raw": "PACF ALM MLK",
+    "id": "0005260306503"
+  },
+  {
+    "web": "Private Selection™ Avocado Oil",
+    "raw": "PRSL AVOCADO OIL",
+    "id": "0001111080968"
+  },
+  {
+    "web": "Private Selection™ Dalmatian Rubbed Sage",
+    "raw": "PRSL SAGE",
+    "id": "0001111072979"
+  },
+  {
+    "web": "Simple Truth Organic™ Cream Cheese",
+    "raw": "STO CREAM CHEESE",
+    "id": "0001111088637"
+  },
+  {
+    "web": "Simple Truth Organic™ Cultured Grade A Sour Cream",
+    "raw": "STO REG SOUR CREAM",
+    "id": "0001111002094"
+  },
+  {
+    "web": "Simple Truth Organic™ Fat Free Free Range Chicken Broth",
+    "raw": "STO BROTH",
+    "id": "0001111087691"
+  },
+  {
+    "web": "Simple Truth™ Pecan Halves",
+    "raw": "ST PECAN HLV RAW",
+    "id": "0001111002471"
+  },
+  {
+    "web": "Simple Truth™ Sliced Raw Almonds",
+    "raw": "ST ALMONDS SLC R",
+    "id": "0001111002467"
+  },
+  {
+    "web": "Simple Truth™ Slivered Blanched Almonds",
+    "raw": "ST ALMONDS SLV R",
+    "id": "0001111002468"
+  },
+  {
+    "web": "Simple Truth™ Walnut Halves & Pieces",
+    "raw": "ST WALNUTS HLV",
+    "id": "0001111002469"
+  },
+  {
+    "web": "SmartWater Vapor Distilled",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616250700"
+  },
+  {
+    "web": "Starbucks French Dark Roast Ground Coffee",
+    "raw": "STARBUCKS COFFEE",
+    "id": "0076211177859"
+  },
+  {
+    "web": "Tillamook Medium Cheddar Farmstyle Cut Shredded Cheese",
+    "raw": "TLMK CHEESE",
+    "id": "0007283000100"
+  },
+  {
+    "web": "VF PR UNSALTED BUTTER",
+    "raw": "VF PR BUTTER",
+    "id": "0086174500008"
+  }
+]

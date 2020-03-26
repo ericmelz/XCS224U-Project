@@ -1,0 +1,42 @@
+[
+  {
+    "web": "Avocado - Large",
+    "raw": "AVOCADO",
+    "id": "0000000004225"
+  },
+  {
+    "web": "Brussels Sprouts",
+    "raw": "BRUSSEL SPRT",
+    "id": "0000000004550"
+  },
+  {
+    "web": "Celery - Small",
+    "raw": "CELERY",
+    "id": "0000000004070"
+  },
+  {
+    "web": "Fresh Gourmet Crispy Hatch Chiles 3.5 Oz",
+    "raw": "FGOR CRSP HTCH PPR",
+    "id": "0078735917975"
+  },
+  {
+    "web": "Fresh Gourmet Crispy Red Peppers",
+    "raw": "FGOR PEPPERS",
+    "id": "0078735917519"
+  },
+  {
+    "web": "Organic - Cauliflower",
+    "raw": "PRSL CAU ORG",
+    "id": "0000000094079"
+  },
+  {
+    "web": "Simple Truth Organic™ Solid Packed 100% Pure Pumpkin",
+    "raw": "STO PUMPKIN",
+    "id": "0001111079021"
+  },
+  {
+    "web": "Spectrum Essentials Organic Ground Flaxseed with Omega-3 & Lignans",
+    "raw": "SPCT FLAX SD",
+    "id": "0002250667789"
+  }
+]

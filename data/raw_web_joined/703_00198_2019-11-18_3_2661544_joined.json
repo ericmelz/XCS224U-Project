@@ -1,0 +1,107 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "Avocado - Small",
+    "raw": "HAAS AVOCADO",
+    "id": "0000000004046"
+  },
+  {
+    "web": "Beyond Meat Hot Italian Plant-Based Sausage",
+    "raw": "BYND SSG HT ITLN",
+    "id": "0085262900475"
+  },
+  {
+    "web": "Blue Diamond Bold Habanero BBQ Almonds",
+    "raw": "BLDM ALMONDS",
+    "id": "0004157005039"
+  },
+  {
+    "web": "Blue Diamond Smokehouse Almonds",
+    "raw": "BLDM ALMONDS",
+    "id": "0004157003083"
+  },
+  {
+    "web": "Blue Diamond Whole Natural Almonds",
+    "raw": "BLDM ALMONDS",
+    "id": "0004157005442"
+  },
+  {
+    "web": "Fancy Feast Classic Pate Chicken Feast Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000042994"
+  },
+  {
+    "web": "Fancy Feast Classic Pate Cod Sole & Shrimp Feast Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000042894"
+  },
+  {
+    "web": "Fancy Feast Classic Pate Tender Beef Feast Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000042954"
+  },
+  {
+    "web": "Fancy Feast Classic Tender Beef & Liver Feast Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000042914"
+  },
+  {
+    "web": "Fancy Feast Filet Mignon Flavor with Real Seafood & Shrimp Dry Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000057283"
+  },
+  {
+    "web": "Fancy Feast Grilled Beef Feast in Gravy Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000004070"
+  },
+  {
+    "web": "Fancy Feast Grilled Liver & Chicken Feast in Gravy Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000010086"
+  },
+  {
+    "web": "Fancy Feast Grilled Salmon Feast in Gravy Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000050389"
+  },
+  {
+    "web": "Fancy Feast Sliced Chicken Hearts & Liver Feast in Gravy Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000043464"
+  },
+  {
+    "web": "Fresh Gourmet Crispy Hatch Chiles 3.5 Oz",
+    "raw": "FGOR CRSP HTCH PPR",
+    "id": "0078735917975"
+  },
+  {
+    "web": "Fresh Gourmet Crispy Red Peppers",
+    "raw": "FGOR PEPPERS",
+    "id": "0078735917519"
+  },
+  {
+    "web": "Fresh Gourmet Lightly Salted Crispy Jalapenos",
+    "raw": "FGOR JALAPEN",
+    "id": "0078735917512"
+  },
+  {
+    "web": "Simple Truth™ Lemon Verbena Hand Soap",
+    "raw": "ST LHS TEA",
+    "id": "0004126037637"
+  },
+  {
+    "web": "SmartWater Vapor Distilled",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616250700"
+  },
+  {
+    "web": "Taylor Farms Avocado Ranch Chopped Salad Kit",
+    "raw": "TYFR SALAD KIT",
+    "id": "0003022304150"
+  }
+]

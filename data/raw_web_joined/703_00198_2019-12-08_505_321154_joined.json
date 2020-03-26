@@ -1,0 +1,82 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "Arm & Hammer Peroxi Care Healthy Gums Toothpaste",
+    "raw": "AHMR PRXCRE TP",
+    "id": "0003320018770"
+  },
+  {
+    "web": "Arrowhead Ice",
+    "raw": "ARROWHEAD ICE",
+    "id": "0003396200957"
+  },
+  {
+    "web": "Colgate Total Advanced Whitening Toothpaste Value Pack",
+    "raw": "COLG TTL ADV TP",
+    "id": "0003500046387"
+  },
+  {
+    "web": "Crystal Geyser Alpine Spring Water",
+    "raw": "CGYS ALPINE",
+    "id": "0007514000515"
+  },
+  {
+    "web": "Dove Sugar Cane & Warm Vanilla Foaming Hand Wash",
+    "raw": "DOVE HAND WASH",
+    "id": "0001111100942"
+  },
+  {
+    "web": "Eggland's Best Organic Grade A Large Brown Eggs",
+    "raw": "EGGLANDS BEST EGGS",
+    "id": "0071514171682"
+  },
+  {
+    "web": "Galbani Mozzarella String Cheese 12 Count",
+    "raw": "GLBNI WM STRNG CHSRC",
+    "id": "0007403066165"
+  },
+  {
+    "web": "Kerrygold Shredded Savory Cheddar Cheese",
+    "raw": "KRGD SHRED CHS",
+    "id": "0076770701331"
+  },
+  {
+    "web": "Nut Pods French Vanilla Unsweetened Dairy-Free Creamer",
+    "raw": "NUTPODS CREAMER",
+    "id": "0086840800022"
+  },
+  {
+    "web": "Nut Pods Hazelnut Unsweetened Dairy-Free Creamer",
+    "raw": "NUTPODS CREAMER",
+    "id": "0086840800023"
+  },
+  {
+    "web": "Picnik Unsweetened Original Creamer",
+    "raw": "PICNIK CREAMER",
+    "id": "0085624100615"
+  },
+  {
+    "web": "Sincerely Brigitte Jalapeno Cilantro Cheese",
+    "raw": "MONTEREY JACK",
+    "id": "0065121911209"
+  },
+  {
+    "web": "Sincerely Brigitte Tomato Olive Cheese",
+    "raw": "MONTEREY JACK",
+    "id": "0065121911207"
+  },
+  {
+    "web": "SmartWater Vapor Distilled",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616250700"
+  }
+]

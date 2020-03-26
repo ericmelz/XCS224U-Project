@@ -1,0 +1,47 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "Blue Diamond Whole Natural Almonds",
+    "raw": "BLDM ALMONDS",
+    "id": "0004157005442"
+  },
+  {
+    "web": "Fresh Gourmet Crispy Hatch Chiles 3.5 Oz",
+    "raw": "FGOR CRSP HTCH PPR",
+    "id": "0078735917975"
+  },
+  {
+    "web": "Fresh Gourmet Crispy Onions",
+    "raw": "FGOR ONIONS",
+    "id": "0078735917500"
+  },
+  {
+    "web": "Fresh Gourmet Crispy Red Peppers",
+    "raw": "FGOR PEPPERS",
+    "id": "0078735917519"
+  },
+  {
+    "web": "Fresh Gourmet Lightly Salted Crispy Jalapenos",
+    "raw": "FGOR JALAPEN",
+    "id": "0078735917512"
+  },
+  {
+    "web": "Planters Deluxe Whole Cashews",
+    "raw": "PLNTR CASHEW",
+    "id": "0002900001613"
+  },
+  {
+    "web": "SmartWater Vapor Distilled",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616250700"
+  },
+  {
+    "web": "Vidla Red Froro N/av 32oz",
+    "raw": "ONIONS ORGNC",
+    "id": "0009297200128"
+  }
+]

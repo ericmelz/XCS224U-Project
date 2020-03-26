@@ -1,0 +1,32 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "Crystal Geyser Alpine Spring Water",
+    "raw": "CGYS ALPINE",
+    "id": "0007514000515"
+  },
+  {
+    "web": "Simple Truth Organic™ Celery Hearts",
+    "raw": "CLRY HRT (STO) ORG",
+    "id": "0001111091660"
+  },
+  {
+    "web": "Sir Kensington's Avocado Oil Mayonnaise",
+    "raw": "SIR KSNGTN MAYO",
+    "id": "0085055100537"
+  },
+  {
+    "web": "Starbucks Cinnamon Dolce Ground Coffee",
+    "raw": "STARBUCKS COFFEE",
+    "id": "0076211101439"
+  },
+  {
+    "web": "Starbucks French Dark Roast Ground Coffee",
+    "raw": "STARBUCKS COFFEE",
+    "id": "0076211177859"
+  }
+]

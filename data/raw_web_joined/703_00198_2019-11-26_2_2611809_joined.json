@@ -1,0 +1,137 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "Arrowhead Ice",
+    "raw": "ARROWHEAD ICE",
+    "id": "0003396200957"
+  },
+  {
+    "web": "Birds Eye Steamfresh Premium Brussels Sprouts",
+    "raw": "BIRDSEYE STMFRSH",
+    "id": "0001450002158"
+  },
+  {
+    "web": "Birds Eye Steamfresh Whole Green Beans",
+    "raw": "BIRDSEYE STMFRSH",
+    "id": "0001450002157"
+  },
+  {
+    "web": "Bob's Red Mill Organic Coconut Flour",
+    "raw": "BIRDSEYE STMFRSH",
+    "id": "0003997801815"
+  },
+  {
+    "web": "Crystal Geyser Alpine Spring Water",
+    "raw": "CGYS ALPINE",
+    "id": "0007514000515"
+  },
+  {
+    "web": "Dairy Pure Heavy Whipping Cream",
+    "raw": "DAIRY PURE WHP CRM",
+    "id": "0004190007954"
+  },
+  {
+    "web": "Eggland's Best Organic Grade A Large Brown Eggs",
+    "raw": "EGGLANDS BEST EGGS",
+    "id": "0071514171682"
+  },
+  {
+    "web": "Jimmy Dean Regular Premium Pork Sausage Roll",
+    "raw": "JM DN SAUSAGE ROLL",
+    "id": "0007790011553"
+  },
+  {
+    "web": "Kroger® Pecan Halves",
+    "raw": "KROGER PECANS",
+    "id": "0001111073790"
+  },
+  {
+    "web": "Nature Sweet Cherubs Tomatoes",
+    "raw": "NTSW TOMATO CHERUB",
+    "id": "0075166677405"
+  },
+  {
+    "web": "Onions - Yellow",
+    "raw": "ONIONS YLW",
+    "id": "0000000004093"
+  },
+  {
+    "web": "Organic - Cauliflower",
+    "raw": "PRSL CAU ORG",
+    "id": "0000000094079"
+  },
+  {
+    "web": "Oscar Mayer Naturally Hardwood Smoked Bacon Mega Pack",
+    "raw": "OSCM BACON",
+    "id": "0004470007648"
+  },
+  {
+    "web": "Philadelphia Original Cream Cheese",
+    "raw": "PHLLY CREAM CHEESE",
+    "id": "0002100061223"
+  },
+  {
+    "web": "Simple Truth Organic™ Cultured Grade A Sour Cream",
+    "raw": "STO REG SOUR CREAM",
+    "id": "0001111002094"
+  },
+  {
+    "web": "Simple Truth™ Almond Meal Flour",
+    "raw": "ST ALMOND MEAL",
+    "id": "0001111086030"
+  },
+  {
+    "web": "Simple Truth™ Bath Tissue",
+    "raw": "ST BATH TISSUE",
+    "id": "0001111003369"
+  },
+  {
+    "web": "Simple Truth™ Fully Cooked Uncured Applewood Smoked Bacon",
+    "raw": "ST COOKED BACON",
+    "id": "0001111060460"
+  },
+  {
+    "web": "Simple Truth™ Fully Cooked Uncured Hardwood Smoked Turkey Bacon",
+    "raw": "ST TURKEY BACON",
+    "id": "0001111008512"
+  },
+  {
+    "web": "Simple Truth™ Natural Young Turkey (10-14 lb)",
+    "raw": "STN TURKEY",
+    "id": "0021000800000"
+  },
+  {
+    "web": "SmartWater Vapor Distilled",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616250700"
+  },
+  {
+    "web": "Spice Islands Pumpkin Pie Spice",
+    "raw": "SPCIS PUMPKIN PIE",
+    "id": "0001732400281"
+  },
+  {
+    "web": "Spice Islands Pure Vanilla Extract",
+    "raw": "SPCIS VAN EXTRACT",
+    "id": "0001732400390"
+  },
+  {
+    "web": "Swerve Granular All Natural Sweetener",
+    "raw": "SWERVE ALL NAT SWE",
+    "id": "0085270030017"
+  },
+  {
+    "web": "Taylor Farms Avocado Ranch Chopped Salad Kit",
+    "raw": "TYFR SALAD KIT",
+    "id": "0003022304150"
+  }
+]
