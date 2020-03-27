@@ -1,0 +1,422 @@
+[
+  {
+    "web": "(LMTD QTY) Essentia Ionized Alkaline Water",
+    "raw": "ESNT WATER",
+    "id": "0065722700050"
+  },
+  {
+    "web": "(LMTD QTY) FIJI Natural Artesian Water",
+    "raw": "FIJI WATER",
+    "id": "0063256500003"
+  },
+  {
+    "web": "(LMTD QTY) Kroger® Spring Water",
+    "raw": "KRO WATER",
+    "id": "0001111042139"
+  },
+  {
+    "web": "(LMTD QTY) Robitussin Max Strength Blue Raspberry Nighttime Cough DM Liquid",
+    "raw": "ROBITUSSIN COUGH",
+    "id": "0030031871818"
+  },
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "ABOUND™ Natural Clumping Cat Litter",
+    "raw": "ABOUND CAT LITTER",
+    "id": "0001111080010"
+  },
+  {
+    "web": "Artichoke",
+    "raw": "ARTICHOKES",
+    "id": "0000000004762"
+  },
+  {
+    "web": "Atkins Endulge Chocolate Coconut Treat Bar",
+    "raw": "ATKINS BARS",
+    "id": "0063748007506"
+  },
+  {
+    "web": "Avocado - Small",
+    "raw": "AVOCADO HASS",
+    "id": "0000000004046"
+  },
+  {
+    "web": "Beef Choice For Stir Fry",
+    "raw": "BEEF STR FRY",
+    "id": "0020254600000"
+  },
+  {
+    "web": "Beyond Meat Hot Italian Plant-Based Sausage",
+    "raw": "BYND SSG HT ITLN",
+    "id": "0085262900475"
+  },
+  {
+    "web": "Beyond Meat The Beyond Burger Plant-Based Burger Patties",
+    "raw": "BYND BURGER",
+    "id": "0085262900458"
+  },
+  {
+    "web": "Boar's Head Monterey Jack with Jalapeno Pre-Sliced Cheese",
+    "raw": "BRHD CHEESE",
+    "id": "0004242150011"
+  },
+  {
+    "web": "Broccoli",
+    "raw": "BROCCOLI",
+    "id": "0000000004060"
+  },
+  {
+    "web": "Cauliflower",
+    "raw": "CAULIFLOWER",
+    "id": "0000000004079"
+  },
+  {
+    "web": "Celery - Small",
+    "raw": "CELERY",
+    "id": "0000000004070"
+  },
+  {
+    "web": "Cholula Original Hot Sauce",
+    "raw": "CHOLULA HOT SAUCE",
+    "id": "0004973312345"
+  },
+  {
+    "web": "Cucumber - English",
+    "raw": "CUCUMBERS",
+    "id": "0000000004593"
+  },
+  {
+    "web": "Del Cabo Cucumber Og 16 Oz",
+    "raw": "CUCUMBERS",
+    "id": "0079985791110"
+  },
+  {
+    "web": "Earthwise Palm Trees Reusable Shopping Bag",
+    "raw": "PALM SHOPPING BAGS",
+    "id": "0088807770000"
+  },
+  {
+    "web": "Fancy Feast Classic Pate Cod Sole & Shrimp Feast Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000042894"
+  },
+  {
+    "web": "Fancy Feast Classic Pate Tender Liver & Chicken Feast Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000042904"
+  },
+  {
+    "web": "Fancy Feast Flaked Fish & Shrimp Feast Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000042874"
+  },
+  {
+    "web": "Frigo Cheese Heads Low Moisture Part Skim Original Mozzarella String Cheese",
+    "raw": "FRGO STR CHS",
+    "id": "0004171623216"
+  },
+  {
+    "web": "Galbani String Cheese",
+    "raw": "GLBNI STR CHS",
+    "id": "0007403006610"
+  },
+  {
+    "web": "Hefty Storage Slider Bags",
+    "raw": "HEFTY STORAGE BAG",
+    "id": "0001370081220"
+  },
+  {
+    "web": "Kroger® Honey Citrus & Shea Butter Hand Soap Bottle",
+    "raw": "KRO SOAP",
+    "id": "0004126037552"
+  },
+  {
+    "web": "Kroger® Beef Shaved Steak",
+    "raw": "KRO BF STK SHAVED",
+    "id": "0001111034567"
+  },
+  {
+    "web": "Kroger® Pear & Coconut Hand Soap",
+    "raw": "KRO PEAR COCONUT",
+    "id": "0004126038546"
+  },
+  {
+    "web": "Kroger® Premium Coconut Milk",
+    "raw": "KRO CCNT MK",
+    "id": "0001111090414"
+  },
+  {
+    "web": "Kroger® Romaine Leaf Single Cut Leaf",
+    "raw": "KRO ROMAINE",
+    "id": "0001111018168"
+  },
+  {
+    "web": "Kroger® Romaine Lettuce Hearts",
+    "raw": "KRO ROMAINE",
+    "id": "0001111091629"
+  },
+  {
+    "web": "Kroger® Whole Baby Bella Mushrooms",
+    "raw": "MSHRM BYBL WHL",
+    "id": "0001111091490"
+  },
+  {
+    "web": "Les Petites Havarati Cheese Wedge",
+    "raw": "LES PET CHEESE",
+    "id": "0065121920904"
+  },
+  {
+    "web": "Les Petites Kosher Colby Jack Cheese",
+    "raw": "LES PET CHEESE BAR",
+    "id": "0065121920602"
+  },
+  {
+    "web": "MEAT FS",
+    "raw": "MEAT FS",
+    "id": "0000000078090"
+  },
+  {
+    "web": "MEAT FS",
+    "raw": "MEAT FS",
+    "id": "0000000078090"
+  },
+  {
+    "web": "Mezzetta Pitted Greek Kalamata Olives",
+    "raw": "MZTA OLIVES",
+    "id": "0007321400617"
+  },
+  {
+    "web": "Mountain High Plain Original Whole Milk Yoghurt",
+    "raw": "MOUNTAIN HGH YOGRT",
+    "id": "0007527041052"
+  },
+  {
+    "web": "NO CHICKEN BROTH TETRA",
+    "raw": "OCEANS HALO BROTH",
+    "id": "0081167003070"
+  },
+  {
+    "web": "Nut Pods Hazelnut Unsweetened Dairy-Free Creamer",
+    "raw": "NUTPODS CREAMER",
+    "id": "0086840800023"
+  },
+  {
+    "web": "Onions - Green",
+    "raw": "ONIONS GREEN",
+    "id": "0000000004068"
+  },
+  {
+    "web": "Onions - Red - Jumbo",
+    "raw": "ONIONS RED JUMB***",
+    "id": "0000000004082"
+  },
+  {
+    "web": "Onions - Yellow",
+    "raw": "BROWN ONIONS",
+    "id": "0000000004093"
+  },
+  {
+    "web": "Organic - Asparagus",
+    "raw": "ASP ORG",
+    "id": "0000000094080"
+  },
+  {
+    "web": "Organic - Cabbage - Green",
+    "raw": "CABBAGE ORG",
+    "id": "0000000094069"
+  },
+  {
+    "web": "Organic - Cabbage - Red",
+    "raw": "CABBAGE ORG",
+    "id": "0000000094554"
+  },
+  {
+    "web": "Organic - Parsley - Curly",
+    "raw": "PARSLEY ORG",
+    "id": "0000000094899"
+  },
+  {
+    "web": "Organic - Peppers - Green Bell",
+    "raw": "PPRS BL GRN ORGN",
+    "id": "0000000094065"
+  },
+  {
+    "web": "Organic - Radishes",
+    "raw": "RADISH ORG",
+    "id": "0000000094089"
+  },
+  {
+    "web": "Organic - Squash - Yellow",
+    "raw": "SQSH YLW ORG",
+    "id": "0000000094784"
+  },
+  {
+    "web": "Organic - Tomatoes - On the Vine",
+    "raw": "TOMATO ORGNC",
+    "id": "0000000094664"
+  },
+  {
+    "web": "Organic Italian Parsley",
+    "raw": "PARSLEY ORG",
+    "id": "0000000094901"
+  },
+  {
+    "web": "Oscar Mayer Naturally Hardwood Smoked Bacon Mega Pack",
+    "raw": "OSCM BACON",
+    "id": "0004470007648"
+  },
+  {
+    "web": "Patak Mild Curry Spice Paste",
+    "raw": "PATAK CURRY PASTE",
+    "id": "0006927603205"
+  },
+  {
+    "web": "Pero Organic Green Beans",
+    "raw": "GREEN BEANS ORGNC",
+    "id": "0080394423044"
+  },
+  {
+    "web": "Private Selection™ Campari Tomatoes",
+    "raw": "TOMATOES CAMPARI",
+    "id": "0001111091687"
+  },
+  {
+    "web": "Private Selection™ Grab & Go Maple Turkey Breast",
+    "raw": "PRSL MPL TKY GNG",
+    "id": "0020584490000"
+  },
+  {
+    "web": "Private Selection™ Grab & Go Muenster Cheese",
+    "raw": "PRSL MUENSTR",
+    "id": "0020615390000"
+  },
+  {
+    "web": "Purina Fancy Feast Classic Pate Chicken Feast Wet Cat Food Can",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000042994"
+  },
+  {
+    "web": "Purina Fancy Feast Classic Pate Savory Salmon Feast Wet Cat Food Can",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000042944"
+  },
+  {
+    "web": "Purina Fancy Feast Classic Pate Tender Beef Feast Wet Cat Food Can",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000042954"
+  },
+  {
+    "web": "Purina Fancy Feast Minced Turkey Feast in Sauce Wet Cat Food Can",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000043494"
+  },
+  {
+    "web": "Purina Fancy Feast Sliced Chicken Hearts & Liver Feast in Gravy Wet Cat Food Can",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000043464"
+  },
+  {
+    "web": "Simple Truth Organic™ Baby Carrots",
+    "raw": "STO CRT BABY ORGNC",
+    "id": "0001111091659"
+  },
+  {
+    "web": "Simple Truth Organic™ Baby Spring Mix",
+    "raw": "STO BABY SPRING MX",
+    "id": "0001111091130"
+  },
+  {
+    "web": "Simple Truth Organic™ Basil",
+    "raw": "STO BASIL",
+    "id": "0001111000876"
+  },
+  {
+    "web": "Simple Truth Organic™ Coconut Milk",
+    "raw": "STO CCNT MILK",
+    "id": "0001111085735"
+  },
+  {
+    "web": "Simple Truth Organic™ Fat Free Beef Stock",
+    "raw": "STO STOCK",
+    "id": "0001111088962"
+  },
+  {
+    "web": "Simple Truth Organic™ Fat Free Free Range Chicken Broth",
+    "raw": "STO BROTH",
+    "id": "0001111087691"
+  },
+  {
+    "web": "Simple Truth Organic™ Whole Carrots",
+    "raw": "STO CARROTS ORGNC",
+    "id": "0001111091619"
+  },
+  {
+    "web": "Simple Truth™ Natural Angus Beef Chuck Roast",
+    "raw": "STN CHCK RST",
+    "id": "0001111019257"
+  },
+  {
+    "web": "Simple Truth™ Pecan Halves",
+    "raw": "ST PECAN HLV RAW",
+    "id": "0001111002471"
+  },
+  {
+    "web": "Simple Truth™ Sea Salt Roasted Cashews",
+    "raw": "ST CASHEWS RS",
+    "id": "0001111002473"
+  },
+  {
+    "web": "Smart Chicken Organic Ground Chicken 95% Lean",
+    "raw": "MBA CHK GROUND",
+    "id": "0067043309410"
+  },
+  {
+    "web": "Softsoap Fresh Breeze Liquid Hand Soap",
+    "raw": "SFTSOAP KTCHN FRSH",
+    "id": "0007418227093"
+  },
+  {
+    "web": "Softsoap Kitchen Fresh Hands Citrus Extracts Antibacterial Hand Soap",
+    "raw": "SFTSOAP KTCHN FRSH",
+    "id": "0007418245096"
+  },
+  {
+    "web": "Squash - Spaghetti",
+    "raw": "SQUASH SPAGHETTI",
+    "id": "0000000004776"
+  },
+  {
+    "web": "Taylor Farms Avocado Ranch Chopped Salad Kit",
+    "raw": "TYFR SALAD KIT",
+    "id": "0003022304150"
+  },
+  {
+    "web": "Taylor Farms Roasted Garlic Chopped Salad Kit",
+    "raw": "TYFR SALAD KIT",
+    "id": "0003022302431"
+  },
+  {
+    "web": "Veroni Italy Salame Calabrese",
+    "raw": "SALAME CALABRESE",
+    "id": "0085680000694"
+  },
+  {
+    "web": "Veroni Italy Salame Milano",
+    "raw": "SALAME MILANO",
+    "id": "0085680000693"
+  },
+  {
+    "web": "Ziploc Quart Freezer Bags",
+    "raw": "ZIPLOC FREEZER BAG",
+    "id": "0002570000388"
+  }
+]
