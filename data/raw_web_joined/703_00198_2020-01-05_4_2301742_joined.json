@@ -1,0 +1,57 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "Blue Diamond Lightly Salted Sea Salt Almonds",
+    "raw": "BLDM ALMONDS",
+    "id": "0004157005725"
+  },
+  {
+    "web": "Colman's English Mustard",
+    "raw": "CLMN ENGLSH MSTRD",
+    "id": "0066780300005"
+  },
+  {
+    "web": "Crystal Geyser Alpine Spring Water",
+    "raw": "CGYS ALPINE",
+    "id": "0007514000515"
+  },
+  {
+    "web": "Murray's® Marcona Fried Almonds with Sea Salt",
+    "raw": "MARCONA ALMONDS",
+    "id": "0081794401075"
+  },
+  {
+    "web": "Murray's® Smoky & Fruity Kalamata Olives",
+    "raw": "KALAMATA OLIVES",
+    "id": "0068725080013"
+  },
+  {
+    "web": "Napoleon Whole Artichoke Hearts",
+    "raw": "NAPOLEON ARTICHOKE",
+    "id": "0004125300483"
+  },
+  {
+    "web": "Pacific Organic Free Range Chicken Broth",
+    "raw": "PACF BROTH",
+    "id": "0005260305425"
+  },
+  {
+    "web": "SmartWater Vapor Distilled",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616250700"
+  },
+  {
+    "web": "Stone Ridge Ranch Shaved Deli Style Corned Beef",
+    "raw": "CORNED BEEF",
+    "id": "0082840481401"
+  }
+]

@@ -1,0 +1,97 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "Arrowhead Ice",
+    "raw": "ARROWHEAD ICE",
+    "id": "0003396200957"
+  },
+  {
+    "web": "Avocado - Extra Large",
+    "raw": "AVOCADOS",
+    "id": "0000000004770"
+  },
+  {
+    "web": "Avocado - Small",
+    "raw": "HAAS AVOCADO",
+    "id": "0000000004046"
+  },
+  {
+    "web": "Beyond Meat Plant-Based Ground Beyond Beef",
+    "raw": "BYND BF",
+    "id": "0085000420709"
+  },
+  {
+    "web": "Crystal Geyser Alpine Spring Water",
+    "raw": "CGYS ALPINE",
+    "id": "0007514000515"
+  },
+  {
+    "web": "Hatch Farms Fire-Roasted Diced Green Chiles",
+    "raw": "HATCH GREEN CHILES",
+    "id": "0002818920466"
+  },
+  {
+    "web": "Kerrygold Pure Irish Butter",
+    "raw": "KRYGLD BUTTER",
+    "id": "0076770700214"
+  },
+  {
+    "web": "Kerrygold Unsalted Pure Irish Butter",
+    "raw": "KRGD BUTTER",
+    "id": "0076770700125"
+  },
+  {
+    "web": "La Victoria Thick 'N Chunky Medium Salsa",
+    "raw": "LAVICTORIA SALSA",
+    "id": "0007210101233"
+  },
+  {
+    "web": "Muir Glen Organic Tomato Paste",
+    "raw": "MUIR GLEN TOMATOES",
+    "id": "0072534238171"
+  },
+  {
+    "web": "Nut Pods French Vanilla Unsweetened Dairy-Free Creamer",
+    "raw": "NUTPODS CREAMER",
+    "id": "0086840800022"
+  },
+  {
+    "web": "Organic - Cauliflower",
+    "raw": "PRSL CAU ORG",
+    "id": "0000000094079"
+  },
+  {
+    "web": "Organic - Onions - Green",
+    "raw": "ONS GRN ORG",
+    "id": "0000000094068"
+  },
+  {
+    "web": "Pacific Organic Free Range Chicken Broth",
+    "raw": "PACF BROTH",
+    "id": "0005260305445"
+  },
+  {
+    "web": "Simple Truth Organic™ No Salt Added Petite Diced Tomatoes",
+    "raw": "STO PETITE DICED",
+    "id": "0001111088532"
+  },
+  {
+    "web": "Simple Truth™ Dry Roasted Sea Salt Macadamia Nuts",
+    "raw": "ST MACADAMIAS RS",
+    "id": "0001111002478"
+  },
+  {
+    "web": "Spice Islands Ground Cumin Seed",
+    "raw": "SPCIS CUMIN",
+    "id": "0001732400233"
+  },
+  {
+    "web": "Tillamook Medium Cheddar Farmstyle Cut Shredded Cheese",
+    "raw": "TLMK CHEESE",
+    "id": "0007283000100"
+  }
+]

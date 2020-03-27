@@ -1,0 +1,32 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "ABOUND™ Natural Clumping Cat Litter",
+    "raw": "ABOUND CAT LITTER",
+    "id": "0001111080010"
+  },
+  {
+    "web": "American BBQ Organic Ground Beef Patties 85 / 15",
+    "raw": "AM BBQ PATTY",
+    "id": "0081486602562"
+  },
+  {
+    "web": "Beyond Meat The Beyond Burger Plant-Based Burger Patties",
+    "raw": "BYND BURGER",
+    "id": "0085262900458"
+  },
+  {
+    "web": "Crystal Geyser Alpine Spring Water",
+    "raw": "CGYS ALPINE",
+    "id": "0007514000515"
+  },
+  {
+    "web": "Joseph Farms Shredded Monterey Jack Cheese",
+    "raw": "JOSF SHRD CHEESE",
+    "id": "0005283312110"
+  }
+]

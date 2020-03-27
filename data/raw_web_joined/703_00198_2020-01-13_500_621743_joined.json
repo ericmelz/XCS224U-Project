@@ -1,0 +1,32 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "Boar's Head Pre-Sliced Lower Sodium Provolone Cheese",
+    "raw": "BRHD CHEESE",
+    "id": "0004242150007"
+  },
+  {
+    "web": "Fancy Feast Medleys Shredded Wild Salmon Fare Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000057051"
+  },
+  {
+    "web": "Fancy Feast Medleys White Meat Chicken Florentine with Cheese & Vegetables Pate Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000096260"
+  },
+  {
+    "web": "Kroger® Red Leaf Single Cut Leaf",
+    "raw": "KRO RED LEAF",
+    "id": "0001111018166"
+  },
+  {
+    "web": "SmartWater Vapor Distilled",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616250700"
+  }
+]

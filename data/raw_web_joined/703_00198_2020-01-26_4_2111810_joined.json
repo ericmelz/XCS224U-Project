@@ -1,0 +1,107 @@
+[
+  {
+    "web": "$000.05 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009405"
+  },
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "ABOUND™ Natural Clumping Cat Litter",
+    "raw": "ABOUND CAT LITTER",
+    "id": "0001111080010"
+  },
+  {
+    "web": "Arrowhead Ice",
+    "raw": "ARROWHEAD ICE",
+    "id": "0003396200957"
+  },
+  {
+    "web": "Avocado - Extra Large",
+    "raw": "AVOCADO HASS",
+    "id": "0000000004770"
+  },
+  {
+    "web": "Beyond Meat Hot Italian Plant-Based Sausage",
+    "raw": "BYND SSG HT ITLN",
+    "id": "0085262900475"
+  },
+  {
+    "web": "Crystal Geyser Alpine Spring Water",
+    "raw": "CGYS ALPINE",
+    "id": "0007514000515"
+  },
+  {
+    "web": "Fancy Feast Creamy Delights Chicken Feast with Real Milk Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000016824"
+  },
+  {
+    "web": "Fancy Feast Creamy Delights Salmon Paté with Real Milk Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000016822"
+  },
+  {
+    "web": "Fancy Feast Creamy Delights Tuna Feast with Real Milk Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000016826"
+  },
+  {
+    "web": "Fancy Feast Gravy Lovers Beef Feast in Roasted Beef Flavor Gravy Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000057847"
+  },
+  {
+    "web": "Fancy Feast Gravy Lovers Chicken & Beef in Gravy Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000029263"
+  },
+  {
+    "web": "Fancy Feast Gravy Lovers Chicken Feast in Grilled Chicken Flavor Gravy Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000057845"
+  },
+  {
+    "web": "Fancy Feast Gravy Lovers Chicken Hearts & Liver Feast in Grilled Chicken Gravy Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000029261"
+  },
+  {
+    "web": "Fancy Feast Gravy Lovers Salmon Feast Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000057841"
+  },
+  {
+    "web": "Glaceau Smartwater Cucumber Lime Bottle",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616200612"
+  },
+  {
+    "web": "Glaceau Smartwater Watermelon Mint Bottle",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616200610"
+  },
+  {
+    "web": "Kerrygold Unsalted Pure Irish Butter",
+    "raw": "KRYGLD BUTTER",
+    "id": "0076770700215"
+  },
+  {
+    "web": "Kroger® # 4 Unbleached Cone Coffee Filters - Natural Brown",
+    "raw": "KRO COFFEE FILTER",
+    "id": "0001111037658"
+  },
+  {
+    "web": "Organic - Cauliflower",
+    "raw": "PRSL CAU ORG",
+    "id": "0000000094079"
+  },
+  {
+    "web": "Zucchini",
+    "raw": "SQUASH ZUCHI",
+    "id": "0000000004067"
+  }
+]

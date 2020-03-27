@@ -1,0 +1,27 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "Arrowhead Ice",
+    "raw": "ARROWHEAD ICE",
+    "id": "0003396200957"
+  },
+  {
+    "web": "Kroger® Alkaline Water Jug (MAX 3)",
+    "raw": "KRO ALKALINE WATER",
+    "id": "0001111088472"
+  },
+  {
+    "web": "SmartWater Vapor Distilled (MAX 3)",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616250700"
+  }
+]

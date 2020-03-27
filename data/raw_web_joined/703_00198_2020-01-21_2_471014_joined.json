@@ -1,0 +1,72 @@
+[
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009315"
+  },
+  {
+    "web": "$000.10 CRV DEPOSIT",
+    "raw": "CA REDEM VAL",
+    "id": "0000000009505"
+  },
+  {
+    "web": "Arrowhead Ice",
+    "raw": "ARROWHEAD ICE",
+    "id": "0003396200957"
+  },
+  {
+    "web": "Beyond Meat Original Brat Plant-Based Sausage Links",
+    "raw": "BYND SSG BRAT",
+    "id": "0085262900477"
+  },
+  {
+    "web": "Boar's Head Monterey Jack with Jalapeno Pre-Sliced Cheese",
+    "raw": "BRHD CHEESE",
+    "id": "0004242150011"
+  },
+  {
+    "web": "Boar's Head Pre-Sliced Gold Label Swiss Cheese",
+    "raw": "BRHD SWS CHS",
+    "id": "0004242150003"
+  },
+  {
+    "web": "Bounty Paper Napkins",
+    "raw": "BNTY NAPKINS",
+    "id": "0003700034885"
+  },
+  {
+    "web": "Crystal Geyser Alpine Spring Water",
+    "raw": "CGYS ALPINE",
+    "id": "0007514000515"
+  },
+  {
+    "web": "Eggland's Best Organic Grade A Large Brown Eggs",
+    "raw": "EGGLANDS BEST EGGSRC",
+    "id": "0071514171682"
+  },
+  {
+    "web": "Fancy Feast Classic Pate Savory Salmon Feast Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000042944"
+  },
+  {
+    "web": "Fancy Feast Medleys White Meat Chicken Florentine Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000057017"
+  },
+  {
+    "web": "Fancy Feast Sliced Chicken Feast in Gravy Wet Cat Food",
+    "raw": "FFST CAT FOOD",
+    "id": "0005000003264"
+  },
+  {
+    "web": "Nut Pods French Vanilla Unsweetened Dairy-Free Creamer",
+    "raw": "NUTPODS CREAMER",
+    "id": "0086840800022"
+  },
+  {
+    "web": "SmartWater Vapor Distilled",
+    "raw": "GLAC SMRTWTR",
+    "id": "0078616250700"
+  }
+]
