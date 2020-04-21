@@ -132,9 +132,22 @@ class IndexDataframe(object):
             if not quiet:
                 print("adding %s" % web)
             try:
+                # mash subsentences
+                # Example: 'the quick brown' => 'thequickbrown quickbrown brown'
+                # This enables wildcard matching on subsentences
+                # E.g. 'the private select' => 'theprivateselect privateselect select'
+                #   matching 'p*r*s*l*' matches 'privateselect'
+                mashed_terms = []
+                web_words = web.split()
+                for i in range(len(web_words)):
+                    mashed = ''.join(web_words[i:])
+                    mashed_terms.append(mashed)                
+                mashed_web = ' '.join(mashed_terms)
+                
                 doc = Document()
                 doc.add(Field("raw", raw, t1))
                 doc.add(Field("web", web, t2))
+                doc.add(Field("mashed_web", mashed_web, t2))
                 doc.add(Field("id", id, t1))
                 writer.addDocument(doc)
             except Exception as e:
@@ -241,9 +254,33 @@ def make_wildcard_query(q, known_words):
     return ' '.join(tokens)                        
 
 
+def make_mashed_wildcard_query(q, known_words):
+    words = q.split()
+    nwords = [normalize_word(word) for word in words]
+    tokens = []
+    for nword in nwords:
+        if nword not in known_words:
+            wild_word = ''
+            for c in nword:
+                wild_word += c + '*'
+            tokens.append('mashed_web:' + wild_word)
+        else:
+            tokens.append(nword)
+    return ' '.join(tokens)                        
+
+
 class WildQueryMaker(QueryMaker):
     def __init__(self, words):
         self.words = words
         
     def make_query(self, raw):
         return make_wildcard_query(raw, self.words)
+
+
+class MashedWildQueryMaker(QueryMaker):
+    def __init__(self, words):
+        self.words = words
+        
+    def make_query(self, raw):
+        return make_mashed_wildcard_query(raw, self.words)
+    
