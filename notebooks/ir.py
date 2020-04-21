@@ -284,3 +284,30 @@ class MashedWildQueryMaker(QueryMaker):
     def make_query(self, raw):
         return make_mashed_wildcard_query(raw, self.words)
     
+
+def make_fuzzy_mashed_wildcard_query(q, known_words):
+    words = q.split()
+    nwords = [normalize_word(word) for word in words]
+    tokens = []
+    for nword in nwords:
+        if nword not in known_words:
+            wild_word = ''
+            for c in nword:
+                wild_word += c + '*'
+            # wildcard version of word
+            tokens.append('mashed_web:' + wild_word)
+            # fuzzy version of word
+            tokens.append(nword + '~')
+        else:
+            tokens.append(nword)
+    return ' '.join(tokens)                        
+    
+
+class FuzzyMashedWildQueryMaker(QueryMaker):
+    def __init__(self, words):
+        self.words = words
+        
+    def make_query(self, raw):
+        return make_fuzzy_mashed_wildcard_query(raw, self.words)
+    
+
