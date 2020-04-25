@@ -100,8 +100,15 @@ make
 make install
 ```
 
+### Restart jupyter
+C-\ 0
+C-c
+conda activate nlu
+jupyter notebook --ip 0.0.0.0
+
 ### Test notebooks
 * In browser, navigate to PyLucene Demo jupyter notebook
 * Execute individual commands
 * Next navigate to Receipt Indexer notebook
 * Execute
+
