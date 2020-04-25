@@ -4,13 +4,13 @@ Final Project for XCS224U - Natural Language Understanding
 ## Setup
 
 ### AWS EC2 Specs
-Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-0f56279347d2fa43e  (64-bit x86)
-m5.2xlarge (8 vCPUs, 32G RAM)
-public subnet
-Enable auto-assign Public IP
-64G storage
-Tags: Name=nlu
-Security Group: Create new, add inbound rule: Custom TCP, Port 8888, Source 0.0.0.0/0  Description: Jupyter
+* Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-0f56279347d2fa43e  (64-bit x86)
+* m5.2xlarge (8 vCPUs, 32G RAM)
+* public subnet
+* Enable auto-assign Public IP
+* 64G storage
+* Tags: Name=nlu
+* Security Group: Create new, add inbound rule: Custom TCP, Port 8888, Source 0.0.0.0/0  Description: Jupyter
 
 ### Local ~/.ssh/config
 ```
@@ -101,10 +101,12 @@ make install
 ```
 
 ### Restart jupyter
+```
 C-\ 0
 C-c
 conda activate nlu
 jupyter notebook --ip 0.0.0.0
+```
 
 ### Test notebooks
 * In browser, navigate to PyLucene Demo jupyter notebook
