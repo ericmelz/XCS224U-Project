@@ -62,6 +62,7 @@ tmux new -s nlu
 C-\ ,
 jupyter
 cd XCS224U-Project/notebooks/
+conda activate nlu
 jupyter notebook --ip 0.0.0.0
 # open browser window per instructions, use public IP
 C-\ c
@@ -98,14 +99,6 @@ NUM_FILES=10
 ```
 make
 make install
-```
-
-### Restart jupyter
-```
-C-\ 0
-C-c
-conda activate nlu
-jupyter notebook --ip 0.0.0.0
 ```
 
 ### Test notebooks
