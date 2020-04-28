@@ -107,3 +107,19 @@ make install
 * Next navigate to Receipt Indexer notebook
 * Execute
 
+### Install word2vec
+```
+conda install -c conda-forge gensim
+```
+
+### Install nltk
+```
+conda install nltk
+python
+import nltk
+nltk.download()
+d
+brown
+q
+Ctrl-D
+```
