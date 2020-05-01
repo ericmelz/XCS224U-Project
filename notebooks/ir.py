@@ -1,5 +1,7 @@
 import sys, os, lucene, threading, time
 
+import json
+from os import listdir, path
 from java.nio.file import Paths
 from org.apache.lucene.analysis.miscellaneous import LimitTokenCountAnalyzer
 from org.apache.lucene.analysis.standard import StandardAnalyzer
@@ -8,6 +10,8 @@ from org.apache.lucene.index import FieldInfo, IndexWriter, IndexWriterConfig, I
 from org.apache.lucene.store import SimpleFSDirectory
 from org.apache.lucene.search import IndexSearcher
 from org.apache.lucene.queryparser.classic import QueryParser
+import nltk
+from nltk.collocations import *
 
 lucene.initVM(vmargs=['-Djava.awt.headless=true'])
 
@@ -21,7 +25,13 @@ class Ticker(object):
             sys.stdout.flush()
             time.sleep(1.0)
             
-"""                                                                                                                        This class is loosely based on the Lucene (java implementation) demo class                                                 org.apache.lucene.demo.IndexFiles.  It will take a directory as an argument                                                and will index all of the files in that directory and downward recursively.                                                It will index on the file path, the file name and the file contents.  The                                                  resulting Lucene index will be placed in the current directory and called                                                  'index'.                                                                                                                      
+"""
+This class is loosely based on the Lucene (java implementation) demo class
+org.apache.lucene.demo.IndexFiles.  It will take a directory as an argument
+and will index all of the files in that directory and downward recursively.
+It will index on the file path, the file name and the file contents.  The
+resulting Lucene index will be placed in the current directory and called
+'index'.                                                                                                                      
 """
 class IndexFiles(object):
     """Usage: python IndexFiles <doc_directory>"""
@@ -75,7 +85,7 @@ class IndexFiles(object):
                 except Exception as e:
                     print("Failed in indexDocs: %s" % e)
 
-def search_loop(index_dir, field="contents"):
+def search_loop(index_dir, field="contents", explain=False):
     searcher = IndexSearcher(DirectoryReader.open(SimpleFSDirectory(Paths.get(index_dir))))
     analyzer = StandardAnalyzer()
     print("Hit enter with no input to quit.")
@@ -94,13 +104,17 @@ def search_loop(index_dir, field="contents"):
                 print(f'{doc.get("web")} | {doc.get("raw")} | {scoreDoc.score}')
             else:
                 print('path:', doc.get("path"), 'name:', doc.get("name"))
-                    
+            if explain:
+                explanation = searcher.explain(query, scoreDoc.doc)
+                print(explanation)
+                print('------------')                    
 
 class IndexDataframe(object):
     def __init__(self, df, storeDir, analyzer, quiet=False):
         if not os.path.exists(storeDir):
             os.mkdir(storeDir)
 
+        self.bigram_set, self.trigram_set = make_ngrams()
         store = SimpleFSDirectory(Paths.get(storeDir))
         config = IndexWriterConfig(analyzer)
         config.setOpenMode(IndexWriterConfig.OpenMode.CREATE)
@@ -138,16 +152,20 @@ class IndexDataframe(object):
                 # E.g. 'the private select' => 'theprivateselect privateselect select'
                 #   matching 'p*r*s*l*' matches 'privateselect'
                 mashed_terms = []
-                web_words = web.split()
+                web_words = [normalize_word(word) for word in web.split()]
                 for i in range(len(web_words)):
                     mashed = ''.join(web_words[i:])
                     mashed_terms.append(mashed)                
                 mashed_web = ' '.join(mashed_terms)
+                bigrams = ' '.join(collect_bigrams(web_words, self.bigram_set))
+                trigrams = ' '.join(collect_trigrams(web_words, self.trigram_set))
                 
                 doc = Document()
                 doc.add(Field("raw", raw, t1))
                 doc.add(Field("web", web, t2))
                 doc.add(Field("mashed_web", mashed_web, t2))
+                doc.add(Field("bigrams", bigrams, t2))
+                doc.add(Field("trigrams", trigrams, t2))
                 doc.add(Field("id", id, t1))
                 writer.addDocument(doc)
             except Exception as e:
@@ -205,6 +223,17 @@ class SimpleSearcher(Searcher):
         query = QueryParser("web", self.analyzer).parse(qstring)
         scoreDocs = self.searcher.search(query, 50).scoreDocs
         return [self.searcher.doc(score_doc.doc) for score_doc in scoreDocs]
+
+    def explain(self, qstring):
+        query = QueryParser("web", self.analyzer).parse(qstring)
+        score_docs = self.searcher.search(query, 50).scoreDocs
+        print(qstring)
+        for score_doc in score_docs:
+            doc = self.searcher.doc(score_doc.doc)
+            print(f'{doc.get("web")} | {doc.get("raw")} | {score_doc.score}')
+            explanation = self.searcher.explain(query, score_doc.doc)
+            print(explanation)
+            print('------------')                    
 
 class Config:
     def __init__(self, query_maker, searcher):
@@ -311,3 +340,58 @@ class FuzzyMashedWildQueryMaker(QueryMaker):
         return make_fuzzy_mashed_wildcard_query(raw, self.words)
     
 
+class ReceiptIter:
+    def __init__(self):
+        self.data_path = '/home/ubuntu/XCS224U-Project/data/raw_web_joined'
+        
+    def __iter__(self):
+        for fname in listdir(self.data_path):
+            file_path = path.join(self.data_path, fname)
+            with open(file_path, 'r') as f:                
+                receipts = json.load(f)
+                for receipt in receipts:
+                    web_sent = [normalize_word(w) for w in receipt['web'].lower().split() if normalize_word(w) not in ['-', '']]
+                    yield web_sent
+                    raw_sent = [normalize_word(w) for w in receipt['raw'].lower().split() if normalize_word(w) not in ['-', '']]
+                    yield raw_sent
+
+def make_ngrams():
+    """
+    Return (bigrams, trigrams): sets of collocated bigrams and trigrams
+    """
+    bigram_measures = nltk.collocations.BigramAssocMeasures()
+    trigram_measures = nltk.collocations.TrigramAssocMeasures()
+    sents = [sent for sent in ReceiptIter()]
+    web_sents = sents[::2]
+    words = [item for sublist in web_sents for item in sublist]
+    bigram_finder = BigramCollocationFinder.from_words(words)
+    bigram_finder.apply_freq_filter(3)
+    bigram_scored_pmi = bigram_finder.score_ngrams(bigram_measures.pmi)
+    bigrams = [bigram for score, bigram in sorted([(score, bigram) for bigram, score in bigram_scored_pmi], reverse=True)]
+    bigram_set = set(bigrams)
+    trigram_finder = TrigramCollocationFinder.from_words(words)
+    trigram_finder.apply_freq_filter(3)
+    trigram_scored_pmi = trigram_finder.score_ngrams(trigram_measures.pmi)
+    trigrams = [trigram for score, trigram in sorted([(score, trigram) for trigram, score in trigram_scored_pmi], reverse=True)]
+    trigram_set = set(trigrams)
+    return (bigram_set, trigram_set)
+
+
+def collect_bigrams(sent, bigram_set):
+    res = []
+    for i in range(len(sent)-1):
+        candidate = tuple(sent[i:i+2])
+        if candidate in bigram_set:
+            res.append('_'.join((candidate)))
+    return res
+
+
+def collect_trigrams(sent, trigram_set):
+    res = []
+    for i in range(len(sent)-2):
+        candidate = tuple(sent[i:i+3])
+        if candidate in trigram_set:
+            res.append('_'.join((candidate)))
+    return res
+                       
+                       
