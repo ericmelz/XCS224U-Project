@@ -157,20 +157,47 @@ class IndexDataframe(object):
                     mashed = ''.join(web_words[i:])
                     mashed_terms.append(mashed)                
                 mashed_web = ' '.join(mashed_terms)
-                bigrams = ' '.join(collect_bigrams(web_words, self.bigram_set))
-                trigrams = ' '.join(collect_trigrams(web_words, self.trigram_set))
+                # if a bigram contains a unigram, elliminate it from web
+                # if a trigram contains a bigram, eliminate it from bigram
+                bigrams = collect_bigrams(web_words, self.bigram_set)
+                trigrams = collect_trigrams(web_words, self.trigram_set)
+                unigrams = web_words[:]
+                unigram_positions_to_eliminate = set()
+                eliminate_unigrams_from_trigrams(unigrams, trigrams, unigram_positions_to_eliminate)
+                eliminate_unigrams_from_bigrams(unigrams, bigrams, unigram_positions_to_eliminate)
+                #unigrams = eliminate_unigrams(unigrams, unigram_positions_to_eliminate)
+                #bigrams = eliminate_bigrams_from_trigrams(bigrams, trigrams)
+                unigrams = ' '.join(unigrams)
+                bigrams = ' '.join(bigrams)
+                trigrams = ' '.join(trigrams)
+                ngrams = ' '.join([unigrams, bigrams, trigrams])
                 
                 doc = Document()
                 doc.add(Field("raw", raw, t1))
                 doc.add(Field("web", web, t2))
                 doc.add(Field("mashed_web", mashed_web, t2))
+                doc.add(Field("unigrams", unigrams, t2))
                 doc.add(Field("bigrams", bigrams, t2))
                 doc.add(Field("trigrams", trigrams, t2))
+                doc.add(Field("ngrams", ngrams, t2))
+                # doc.add(Field("ngrams1", ngrams, t2))
+                # doc.add(Field("ngrams2", ngrams, t2))
+                # doc.add(Field("ngrams3", ngrams, t2))
+                # doc.add(Field("ngrams4", ngrams, t2))
+                # doc.add(Field("ngrams5", ngrams, t2))
+                # doc.add(Field("ngrams6", ngrams, t2))
                 doc.add(Field("id", id, t1))
                 writer.addDocument(doc)
             except Exception as e:
                 print("Failed in indexDocs: %s" % e)
         
+
+def filter_unigrams(sent, bigrams):
+    """
+    Eliminate all bigrams from sent
+    bigrams is a list of the form w1_w2
+    """
+    pass
 
 def normalize_word(word):
     import re
@@ -298,6 +325,66 @@ def make_mashed_wildcard_query(q, known_words):
     return ' '.join(tokens)                        
 
 
+def make_ngram_wildcard_query(q, known_words):
+    words = q.split()
+    nwords = [normalize_word(word) for word in words]
+    tokens = []
+    for nword in nwords:
+        if nword not in known_words:
+            wild_word = ''
+            for c in nword:
+                wild_word += c + '*'
+            tokens.append('web:' + wild_word)
+            tokens.append('bigrams:' + wild_word)
+            tokens.append('trigrams:' + wild_word)
+        else:
+            tokens.append(nword)
+    return ' '.join(tokens)                        
+
+
+def make_xor_ngram_wildcard_query(q, known_words):
+    words = q.split()
+    nwords = [normalize_word(word) for word in words]
+    tokens = []
+    for nword in nwords:
+        if nword not in known_words:
+            wild_word = ''
+            for c in nword:
+                wild_word += c + '*'
+            tokens.append('(web:' + wild_word + ' bigrams:' + wild_word + ' trigrams:' + wild_word + ')')
+        #     tokens.append('(+web:' + wild_word + ' -bigrams:' + wild_word + ' -trigrams:' + wild_word + ')')
+        #     tokens.append('(-web:' + wild_word + ' +bigrams:' + wild_word + ' -trigrams:' + wild_word + ')')
+        #     tokens.append('(-web:' + wild_word + ' -bigrams:' + wild_word + ' +trigrams:' + wild_word + ')')
+        else:
+            tokens.append(nword)
+    return ' OR '.join(tokens)                        
+
+
+def make_boosted_ngram_wildcard_query(q, known_words):
+    words = q.split()
+    nwords = [normalize_word(word) for word in words]
+    tokens = []
+    i = 0
+    for nword in nwords:
+        if nword not in known_words:
+            i += 1
+            wild_word = ''
+            for c in nword:
+                wild_word += c + '*'
+#            tokens.append('ngrams:' + wild_word)
+#            tokens.append(f'ngrams{i}:' + wild_word)
+            tokens.append(f'ngrams:' + wild_word)
+            # tokens.append('(unigrams:' + wild_word + '^1.0 bigrams:' + wild_word + '^1.0 trigrams:' + wild_word + '^1.0)')
+        #     tokens.append('(+web:' + wild_word + ' -bigrams:' + wild_word + ' -trigrams:' + wild_word + ')')
+        #     tokens.append('(-web:' + wild_word + ' +bigrams:' + wild_word + ' -trigrams:' + wild_word + ')')
+        #     tokens.append('(-web:' + wild_word + ' -bigrams:' + wild_word + ' +trigrams:' + wild_word + ')')
+        else:
+            tokens.append(nword + '^1.0')
+    return ' OR '.join(tokens)                        
+
+
+
+
 class WildQueryMaker(QueryMaker):
     def __init__(self, words):
         self.words = words
@@ -312,6 +399,30 @@ class MashedWildQueryMaker(QueryMaker):
         
     def make_query(self, raw):
         return make_mashed_wildcard_query(raw, self.words)
+    
+
+class NgramWildQueryMaker(QueryMaker):
+    def __init__(self, words):
+        self.words = words
+        
+    def make_query(self, raw):
+        return make_ngram_wildcard_query(raw, self.words)
+    
+
+class XorNgramWildQueryMaker(QueryMaker):
+    def __init__(self, words):
+        self.words = words
+        
+    def make_query(self, raw):
+        return make_xor_ngram_wildcard_query(raw, self.words)
+    
+
+class BoostedNgramWildQueryMaker(QueryMaker):
+    def __init__(self, words):
+        self.words = words
+        
+    def make_query(self, raw):
+        return make_boosted_ngram_wildcard_query(raw, self.words)
     
 
 def make_fuzzy_mashed_wildcard_query(q, known_words):
@@ -394,4 +505,42 @@ def collect_trigrams(sent, trigram_set):
             res.append('_'.join((candidate)))
     return res
                        
-                       
+def eliminate_unigrams_from_trigrams(sentence, trigrams, unigram_positions_to_eliminate):
+    trigram_set = set([tuple(trigram.split('_')) for trigram in trigrams])
+    for i in range(len(sentence) - 2):
+        candidate = (sentence[i], sentence[i+1], sentence[i+2])
+        if candidate in trigram_set:
+            unigram_positions_to_eliminate.add(i)
+            unigram_positions_to_eliminate.add(i+1)
+            unigram_positions_to_eliminate.add(i+2)
+
+def eliminate_unigrams_from_bigrams(sentence, bigrams, unigram_positions_to_eliminate):
+    bigram_set = set([tuple(bigram.split('_')) for bigram in bigrams])
+    for i in range(len(sentence) - 1):
+        candidate = (sentence[i], sentence[i+1])
+        if candidate in bigram_set:
+            unigram_positions_to_eliminate.add(i)
+            unigram_positions_to_eliminate.add(i+1)
+
+
+def eliminate_bigrams_from_trigrams(bigrams, trigrams):
+    bigram_set = set(bigrams)
+    bigrams_to_eliminate = set()
+    for trigram in trigrams:
+        t0, t1, t2 = trigram.split('_')
+        candidate1 = t0 + "_" + t1
+        candidate2 = t1 + "_" + t2
+        if candidate1 in bigram_set:
+            bigrams_to_eliminate.add(candidate1)
+        if candidate2 in bigram_set:
+            bigrams_to_eliminate.add(candidate2)
+    new_bigrams = list(bigram_set - bigrams_to_eliminate)
+    return new_bigrams
+
+
+def eliminate_unigrams(sentence, positions_to_eliminate):
+    new_sentence = []
+    for i, word in enumerate(sentence):
+        if i not in positions_to_eliminate:
+            new_sentence.append(word)
+    return new_sentence
