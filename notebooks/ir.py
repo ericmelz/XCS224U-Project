@@ -359,6 +359,31 @@ def make_xor_ngram_wildcard_query(q, known_words):
             tokens.append(nword)
     return ' OR '.join(tokens)                        
 
+def make_fuzzy_ngram_wildcard_query(q, known_words):
+    words = q.split()
+    nwords = [normalize_word(word) for word in words]
+    tokens = []
+    i = 0
+    for nword in nwords:
+        if nword not in known_words:
+            i += 1
+            wild_word = ''
+            for c in nword:
+                wild_word += c + '*'
+#            tokens.append('ngrams:' + wild_word)
+#            tokens.append(f'ngrams{i}:' + wild_word)
+            tokens.append(f'ngrams:' + wild_word)
+            tokens.append(nword + '~')
+            # tokens.append('(unigrams:' + wild_word + '^1.0 bigrams:' + wild_word + '^1.0 trigrams:' + wild_word + '^1.0)')
+        #     tokens.append('(+web:' + wild_word + ' -bigrams:' + wild_word + ' -trigrams:' + wild_word + ')')
+        #     tokens.append('(-web:' + wild_word + ' +bigrams:' + wild_word + ' -trigrams:' + wild_word + ')')
+        #     tokens.append('(-web:' + wild_word + ' -bigrams:' + wild_word + ' +trigrams:' + wild_word + ')')
+        else:
+            tokens.append(nword + '^1.0')
+
+    return ' OR '.join(tokens)                        
+
+
 
 def make_boosted_ngram_wildcard_query(q, known_words):
     words = q.split()
@@ -423,6 +448,13 @@ class BoostedNgramWildQueryMaker(QueryMaker):
         
     def make_query(self, raw):
         return make_boosted_ngram_wildcard_query(raw, self.words)
+
+class FuzzyNgramWildQueryMaker(QueryMaker):
+    def __init__(self, words):
+        self.words = words
+        
+    def make_query(self, raw):
+        return make_fuzzy_ngram_wildcard_query(raw, self.words)
     
 
 def make_fuzzy_mashed_wildcard_query(q, known_words):
