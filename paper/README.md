@@ -1,4 +1,4 @@
 To make the pdf, execute
 ```
-pdflatex acl2019 && bibtex acl2019 && pdflatex acl2019 && open *pdf
+pdflatex receipt_nlu && bibtex receipt_nlu && pdflatex receipt_nlu && open receipt_nlu.pdf
 ```
