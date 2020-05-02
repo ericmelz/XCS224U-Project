@@ -235,7 +235,8 @@ class QueryMaker:
 
 class SimpleQueryMaker(QueryMaker):
     def make_query(self, raw):
-        return raw
+#        return raw
+        return ' '.join([normalize_word(word) for word in raw.split()])
 
 class Searcher:
     def search(self, query):
@@ -319,7 +320,8 @@ def make_mashed_wildcard_query(q, known_words):
             wild_word = ''
             for c in nword:
                 wild_word += c + '*'
-            tokens.append('mashed_web:' + wild_word)
+            if wild_word:
+                tokens.append('mashed_web:' + wild_word)
         else:
             tokens.append(nword)
     return ' '.join(tokens)                        
@@ -372,14 +374,17 @@ def make_fuzzy_ngram_wildcard_query(q, known_words):
                 wild_word += c + '*'
 #            tokens.append('ngrams:' + wild_word)
 #            tokens.append(f'ngrams{i}:' + wild_word)
-            tokens.append(f'ngrams:' + wild_word)
-            tokens.append(nword + '~')
+            if wild_word:
+                tokens.append(f'ngrams:' + wild_word)
+            if nword:
+                tokens.append(nword + '~')
             # tokens.append('(unigrams:' + wild_word + '^1.0 bigrams:' + wild_word + '^1.0 trigrams:' + wild_word + '^1.0)')
         #     tokens.append('(+web:' + wild_word + ' -bigrams:' + wild_word + ' -trigrams:' + wild_word + ')')
         #     tokens.append('(-web:' + wild_word + ' +bigrams:' + wild_word + ' -trigrams:' + wild_word + ')')
         #     tokens.append('(-web:' + wild_word + ' -bigrams:' + wild_word + ' +trigrams:' + wild_word + ')')
         else:
-            tokens.append(nword + '^1.0')
+            if nword:
+                tokens.append(nword + '^1.0')
 
     return ' OR '.join(tokens)                        
 
@@ -398,7 +403,8 @@ def make_boosted_ngram_wildcard_query(q, known_words):
                 wild_word += c + '*'
 #            tokens.append('ngrams:' + wild_word)
 #            tokens.append(f'ngrams{i}:' + wild_word)
-            tokens.append(f'ngrams:' + wild_word)
+            if wild_word:
+                tokens.append(f'ngrams:' + wild_word)
             # tokens.append('(unigrams:' + wild_word + '^1.0 bigrams:' + wild_word + '^1.0 trigrams:' + wild_word + '^1.0)')
         #     tokens.append('(+web:' + wild_word + ' -bigrams:' + wild_word + ' -trigrams:' + wild_word + ')')
         #     tokens.append('(-web:' + wild_word + ' +bigrams:' + wild_word + ' -trigrams:' + wild_word + ')')
