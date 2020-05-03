@@ -73,7 +73,52 @@ Organic\texttrademark Baby Spinach''.
 
 \section{Related Work}
 
-Blah blah blah.
+A literature review reveals virtually no published work in this
+specific domain.  While there is a body of work researching text
+extraction from scanned receipts (e.g.~\citealp{Huang:2019}), the work is primarily
+focused on Named Entity Recognition (NER) instead of Named Entity
+Linking (NEL).  That is, systems are considered successful if they can
+identify text items such as store locations, totals, etc, but they are
+not evaluated with respect to the interpretation of the extracted
+text.
+
+
+Although no papers exist on linking scanned entities, there is
+literature in other areas that appear potentially relevant to the
+subject task.  This includes work on general-purpose techniques for
+building abbreviation dictionaries, acquisition of medical
+abbreviations (e.g., ``COPD'' $\rightarrow$ ``Chronic Obstructive Pulmonary
+Disorder''), and normalization of social media content (e.g., ``ur
+coooool'' $\rightarrow$ ``you are cool'').  The follow sections
+summarize a few papers in these areas.
+
+\subsection{Language Independent Acquisition of Abbreviations}
+~\cite{DBLP:journals/corr/abs-1709-08074} describe a
+language-independent technique for acquiring abbreviations and their
+expansions, by exploiting Wikipedia redirect and disambiguation pages.
+They begin by motivating the acquisition of abbreviations, noting that
+the explosion of social media has made the need for abbreviations
+increasingly important.  They also note that a token such as ``ACE''
+could have multiple expansions, including ``accumulated cyclone
+energy'' and ``American Council on Education'' in addition to the word
+``ace'' (as in ``Ace of spades''). 
+The authors present related work, noting that most of the previous
+work for abbreviation detection and expansion extraction has been in
+the domain of English biomedical text.  A common strategy is to
+identify occurrences where an abbreviation is explicitly paired with
+its expansion for example through a pattern involving a parenthetical
+such as {\em \verb|<short form>  (<long form>)|} or {\em
+  \verb|<long form> (<short form>)|}.
+Other approaches consider the contexts of short form and long form
+occurrences, pairing short forms with long forms according to their
+distributional similarity by measuring the cosine of their context
+vectors.  Another approach uses supervised learning, considering
+features such as string similarity and other characteristics of the
+short and long forms. 
+The author’s work is based on previous work by~\cite{JACQUET14.468} who describe a technique for mining abbreviations by making use of Wikipedia redirection pages.  The authors observe that, due to the use of only redirect pages for the gold standard annotation, a shortcoming of the prior work is that each abbreviation only has a single expansion even though multiple different expansions are possible for some of the abbreviations.  To remedy this shortcoming, the authors propose mining disambiguation pages in addition to redirect pages to gather multiple possible long-form expansions.
+The authors mine redirect and disambiguation pages for abbreviations, while applying several rules such as (a) Short forms are restricted to ten characters or less, (b) At least half of the short-form characters must be upper case, and (c) The long-form must be at least twice as long as the short form, with at least two tokens.  They generate candidate expansions and then score the expansions.  Scoring occurs by computing features for synonym similarity, topic similarity, and surface similarity.  Synonym similarity means that one term can be replaced with another while preserving the meaning of the sentence and is assessed using word embeddings using word2vec~\cite{NIPS2013_5021}.  Topical relatedness means that two terms occur in the same sorts of documents, and is assessed using Latent Semantic Analysis~\cite{deerwester-indexing-1990}.  Surface similarity is the overlap in the surface forms of the terms by computing the best possible alignment between a short form and a long form.   The three similarity scores are combined using a logistic regression model.
+The authors compare their system with a previous system developed by~\cite{SchwartzH03} that extracts abbreviations using parentheses based patterns.  The metric used to compare systems is Area Under the Precision/Recall curve.  Without the scoring extensions, the 2 systems are comparable: the Schwartz and Hearst system has an AUC of 0.359 and the Candidate System has an AUC of 0.324.  However, by adding the alignment and embedding scoring extensions, the Candidate System’s performance improves to an AUC of 0.480.
+
 
 \section{Data}
 
@@ -108,6 +153,10 @@ Blah blah blah
 Blah blah blah
 
 \section{Results}
+
+blah
+
+\section{Future Work}
 
 blah
 
