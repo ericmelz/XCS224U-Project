@@ -17,6 +17,7 @@
 \usepackage{latexsym}
 
 \usepackage{url}
+\usepackage{graphicx}
 
 \aclfinalcopy % Uncomment this line for the final submission
 \def\aclpaperid{1234} %  Enter the acl Paper ID here
@@ -101,7 +102,8 @@ the explosion of social media has made the need for abbreviations
 increasingly important.  They also note that a token such as ``ACE''
 could have multiple expansions, including ``accumulated cyclone
 energy'' and ``American Council on Education'' in addition to the word
-``ace'' (as in ``Ace of spades''). 
+``ace'' (as in ``Ace of spades'').
+
 The authors present related work, noting that most of the previous
 work for abbreviation detection and expansion extraction has been in
 the domain of English biomedical text.  A common strategy is to
@@ -114,15 +116,167 @@ occurrences, pairing short forms with long forms according to their
 distributional similarity by measuring the cosine of their context
 vectors.  Another approach uses supervised learning, considering
 features such as string similarity and other characteristics of the
-short and long forms. 
-The author’s work is based on previous work by~\cite{JACQUET14.468} who describe a technique for mining abbreviations by making use of Wikipedia redirection pages.  The authors observe that, due to the use of only redirect pages for the gold standard annotation, a shortcoming of the prior work is that each abbreviation only has a single expansion even though multiple different expansions are possible for some of the abbreviations.  To remedy this shortcoming, the authors propose mining disambiguation pages in addition to redirect pages to gather multiple possible long-form expansions.
-The authors mine redirect and disambiguation pages for abbreviations, while applying several rules such as (a) Short forms are restricted to ten characters or less, (b) At least half of the short-form characters must be upper case, and (c) The long-form must be at least twice as long as the short form, with at least two tokens.  They generate candidate expansions and then score the expansions.  Scoring occurs by computing features for synonym similarity, topic similarity, and surface similarity.  Synonym similarity means that one term can be replaced with another while preserving the meaning of the sentence and is assessed using word embeddings using word2vec~\cite{NIPS2013_5021}.  Topical relatedness means that two terms occur in the same sorts of documents, and is assessed using Latent Semantic Analysis~\cite{deerwester-indexing-1990}.  Surface similarity is the overlap in the surface forms of the terms by computing the best possible alignment between a short form and a long form.   The three similarity scores are combined using a logistic regression model.
-The authors compare their system with a previous system developed by~\cite{SchwartzH03} that extracts abbreviations using parentheses based patterns.  The metric used to compare systems is Area Under the Precision/Recall curve.  Without the scoring extensions, the 2 systems are comparable: the Schwartz and Hearst system has an AUC of 0.359 and the Candidate System has an AUC of 0.324.  However, by adding the alignment and embedding scoring extensions, the Candidate System’s performance improves to an AUC of 0.480.
+short and long forms.
 
+The author’s work is based on previous work by~\cite{JACQUET14.468}
+who describe a technique for mining abbreviations by making use of
+Wikipedia redirection pages.  The authors observe that, due to the use
+of only redirect pages for the gold standard annotation, a shortcoming
+of the prior work is that each abbreviation only has a single
+expansion even though multiple different expansions are possible for
+some of the abbreviations.  To remedy this shortcoming, the authors
+propose mining disambiguation pages in addition to redirect pages to
+gather multiple possible long-form expansions.
+
+The authors mine redirect and disambiguation pages for abbreviations,
+while applying several rules such as (a) Short forms are restricted to
+ten characters or less, (b) At least half of the short-form characters
+must be upper case, and (c) The long-form must be at least twice as
+long as the short form, with at least two tokens.  They generate
+candidate expansions and then score the expansions.  Scoring occurs by
+computing features for synonym similarity, topic similarity, and
+surface similarity.  Synonym similarity means that one term can be
+replaced with another while preserving the meaning of the sentence and
+is assessed using word embeddings using word2vec~\cite{NIPS2013_5021}.
+Topical relatedness means that two terms occur in the same sorts of
+documents, and is assessed using Latent Semantic
+Analysis~\cite{deerwester-indexing-1990}.  Surface similarity is the
+overlap in the surface forms of the terms by computing the best
+possible alignment between a short form and a long form.   The three
+similarity scores are combined using a logistic regression model.
+
+The authors compare their system with a previous system developed
+by~\cite{SchwartzH03} that extracts abbreviations using parentheses
+based patterns.  The metric used to compare systems is Area Under the
+Precision/Recall curve.  Without the scoring extensions, the 2 systems
+are comparable: the Schwartz and Hearst system has an AUC of 0.359 and
+the Candidate System has an AUC of 0.324.  However, by adding the
+alignment and embedding scoring extensions, the Candidate System’s
+performance improves to an AUC of 0.480. 
+
+\subsection{Clinical Abbreviation Expansion}
+~\cite{liu-etal-2015-exploiting} describe a system for identifying clinical abbreviation
+expansions.  They note that abbreviations are heavily used in medical
+literature and documentation.  In notes written by physicians, high
+workloads and time pressure intensify the need for using
+abbreviations.  This is especially true within intensive care
+medicine, where it’s crucial that information is expressed in the most
+time efficient manner to provide time-sensitive care to critically ill
+patients.  Within the arena of medical research, abbreviation
+expansion using NLP can enable knowledge discovery and has the
+potential to improve quality of care.
+
+The author's system works as follows.  Word embeddings are trained
+using word2vec~\cite{NIPS2013_5021}.  The material used to train embeddings consists of
+medical  texts such as articles, journals, and books, in addition to
+hand-written Intensive Care notes.  To generate expansions for
+abbreviations in the hand-written notes, abbreviations are extracted
+from the notes, and then matched against a domain-specific
+abbreviation knowledge base.  From this list of expansions, 
+embedding vectors are retrieved for the abbreviation and candidate
+expansion.  A similarity score is computed for each (abbreviation,
+expansion) pair, producing a ranked list of candidates expansions.
+
+To test the performance of the system, a ground-truth dataset is
+produced by having physicians manually expand and normalize the
+handwritten notes.  The authors compare their model against several
+baselines.  For example, one baseline chooses the highest rated
+candidate expansion in the domain specific knowledge base.  Comparing
+accuracy of the author’s system against the baselines results in a
+50\%+ increase.  For example the rating baseline has an accuracy of 21\%
+and the authors system has an accuracy of 83\%.
+
+\subsection{Social Media Text Normalization}
+~\cite{Lourentzo:2019} present a Sequence to Sequence (Seq2Seq) model
+for normalizing social media text.  They observe that social media
+texts have an enormous amount of variation, and that text
+normalization systems that rely on surface or phonetic representations
+may be ill-equipped to handle such variability.  To rectify this
+situation, they propose a hybrid word-character Seq2Seq model with
+attention.  This type of model has been successfully applied to tasks
+such as machine translation, and has promise for text normalization.
+
+The authors frame the task of text normalization as mapping an
+out-of-vocabulary (OOV) non-standard word to an in-vocabulary (IV)
+standard word that preserves the meaning of the sentence.  The non
+standard forms in user generated content include misspellings
+(defenitely $\rightarrow$ definitely), phonetic substitutions (2morrow $\rightarrow$
+tomorrow), shortening (convo $\rightarrow$ conversation), acronyms (idk $\rightarrow$ i don’t
+know), slang (``low key'', ``woke''), emphasis (coooool $\rightarrow$ cool), and
+punctuation  
+(doesnt $\rightarrow$ doesn't).
+
+The authors note that lexicon-based approaches are not able to handle
+social media text properly.  String similarity, such as edit distance,
+does not work on non-standard words where the number of edits is
+large, for example abbreviation.   Additionally, systems that rely on
+candidate generation and scoring are limited in that they are not able
+to handle multiple normalization errors at once, e.g., spelling errors
+on an acronym.  The authors suggest that using end-to-end neural
+models, particularly Seq2Seq models can deal with these shortcomings.
+
+The authors train a bidirectional word-based Seq2Seq model to
+translate unnormalized text to normalized texts.  OOV words are
+trained using a character-based Seq2Seq model.  The dataset is
+enhanced by synthetically generating negative examples based on common
+normalization transformations.    The network is trained on source
+sequences and target sequences.  An example source is ``got exo to
+share, u interested?  Concert in hk !'', with a corresponding target of
+``got extra to share, are you interested?  Concert in hong kong !''.
+
+The authors present results for several variations of the model,
+including a word-level Seq2Seq model and the hybrid word-char Seq2Seq
+model.  The best score is an F\textsubscript{1} score of 83.94 on the
+hybrid word-char Seq2Seq model.
 
 \section{Data}
 
-Blah blah blah.
+For this task, we need a dataset which includes scanned receipt
+product mentions (e.g, ``BRHD CHEESE'') and the corresponding product
+entities (e.g.,  ``Boar's Head Monterey Jack with Jalapeno Pre-Sliced
+Cheese'').  A brief web search revealed that no such publicly available
+dataset exists.  To obtain a dataset, we built our own by scraping a
+grocery store website that contains purchase data.  Specifically, we
+use our personal loyalty account with Ralph's (a subsidiary of
+Kroger) to obtain representations of scanned receipts along with
+corresponding web pages that contain fully-resolved entities.   
+As an example, Figure \ref{fig:scanned} shows an instance of a receipt. 
+
+
+\begin{figure}[h]
+  \centering
+    \includegraphics[width=0.5\textwidth]{raw_receipt}
+    \caption{Scanned Receipt}
+    \label{fig:scanned}
+\end{figure}
+
+Figure \ref{fig:web} shows part of the corresponding web page which contains linked representations of the purchased items.
+
+\begin{figure}[h]
+  \centering
+\includegraphics[width=0.5\textwidth]{web_receipt}
+\caption{Web Receipt}
+\label{fig:web}
+\end{figure}
+
+We scrape both the text content of the raw receipts and the
+user-friendly web rendering, then join the raw receipt data with the
+corresponding web data.  This produces a JSON structure per receipt.
+A sample of the JSON is shown in Figure \ref{fig:json}.  The ``raw''
+field represents the product mention, and the ``web'' field represents
+the label associated with the entity.  The ``id'' field is scraped from
+the web page and can be used as a succinct identifier for the entity. 
+
+\begin{figure}[h]
+  \centering
+\includegraphics[width=0.5\textwidth]{json}
+\caption{JSON representation of joined ``raw'' and ``web'' data}
+\label{fig:json}
+\end{figure}
+
+The dataset consists of 65 scraped receipts, producing 711 non-unique line
+line items, and 296 unique line items.
+
 
 \section{Methodology}
 
