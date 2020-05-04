@@ -23,6 +23,13 @@
 \aclfinalcopy % Uncomment this line for the final submission
 \def\aclpaperid{1234} %  Enter the acl Paper ID here
 
+\newenvironment{myitemize}
+{ \begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}     }
+{ \end{itemize}                  }
+
 %\setlength\titlebox{5cm}
 % You can expand the titlebox if you need extra space
 % to show all the authors. Please do not make the titlebox
@@ -291,18 +298,10 @@ experiment setup since there is a uniform distribution across classes:
 each class is represented by exactly one test instance. 
 To be concrete, here’s an example.  Suppose we have the following 2
 unique mentions: 
-\newenvironment{myitemize}
-{ \begin{itemize}
-    \setlength{\itemsep}{0pt}
-    \setlength{\parskip}{0pt}
-    \setlength{\parsep}{0pt}     }
-{ \end{itemize}                  }
-
 \begin{myitemize}
 \item BRHD CHEESE
 \item AVOCADO
 \end{myitemize}
-
 Further suppose that the entity for BRHD CHEESE was correctly
 predicted as “Boar's Head Monterey Jack with Jalapeno Pre-Sliced
 Cheese”, and the prediction for AVOCADO yielded nothing.  The first
@@ -332,6 +331,10 @@ queries, phrase detection, etc.
 
 \section{Experiments}
 
+In fhte following sections, we report a series of experiments that
+leverage Lucene.  We index the web versions of entities and query the
+index with the raw line items derived from scanned receipts.
+
 Lucene's default scoring formula is
 BM25~\cite{robertson:2009}.  BM25 is based on a
 bag-of-words approach. The score of a document $D$ given a query $Q$
@@ -347,34 +350,174 @@ score(D,Q) = \sum_{i=1}^{n} IDF(q_i) \cdot \\
 \end{equation}
 
 where $f(q_i, D)$ is $q_i$'s term frequency in the document $D$, $|D|$
-is the length of the document $D$ in words, and avgdl is the average
+is the length of the document $D$ in words,
+$IDF$ is inverse document frequency, calculated as $log(1 + (N - n + 0.5) / (n + 0.5))$, 
+where $n$ is the number of documents that $q_i$ appears in, and $N$
+is the total number of documents,
+and $avgdl$ is the average
 document length in the text collection from which documents are
-drawn. $k_1$ and $b$ are free parameters.
+drawn. $k_1$ and $b$ are free parameters.  $k_1$ represents a term
+saturation parameter, controlling the equation's senstivitiy to
+incrementally increasing term frequencies, and $b$ is a length
+normalization parameter, controlling the equation's sensitivity
+to the length of a phrase.  For the experiments reported in this
+paper, $k_1 = 1.2$ and $b = 0.75$.
 
+To develop and optimize the retrieval process, we worked with an index
+derived from a single receipt.
+In each section, we report scores against an index based on the
+development receipt.  The final results report results against
+the entire set of 65 receipts.
 
 \subsection{Baseline}
 
-Blah blah blah
+The first experiment used out-of-the-box Lucene.  This setup tokenized
+the index and queries using the $StandardAnalyzer$, which does
+superficial processing on terms such as lowercasing them.
+
+Using this approach, we acheive an accuracy of 0.623.
+This basic approach is capable of matching entities with identical
+scanned representations, but falls short when the scanned
+representation contains abbreviations.  For example, the
+query ``KRO WATER'' will consider the entity ``Fiji Water''
+an equally good match as ``Kroger Water'' even though ``KRO''
+is an abbreviation for ``Kroger''.
 
 \subsection{Wildcards}
 
-Blah blah blah
+To help solve the problem of missed abbreviations, we introduced a
+wildcard technique.  First, we construct a dictionary of all the words
+present in the web entity entries.  When constructing a query from the
+scanned representation, we eliminate all words that are present in the
+dictionary.  For the remaining terms, we rewrite those terms to match
+indexed terms that contain all the letters in the raw terms.  For
+example, the term ``KRO'' will be rewritten as in the query as
+``K*R*O*`` and hence match ``Kroger``.  Note that in Lucene, wildcard
+matches do not use term frequency or inverse document frequency but
+count as 1.0 if there is a match between the wildcard and some indexed
+term, and 0 otherwise.  Hence, a query with 3 wildcard terms and two
+matches would receive a score of exactly 2.0.
+
+Using the wildcard technique, we boost the accuracy to 0.841, a
+substantial improvement of the baseline of 0.623.  The wildcard
+approach does seem to make some progress towards solving the
+abbreviation problem, however, there are still cases where this simple
+approach fails.  For example, if an abbreviation spans multiple terms,
+the wildcard approach will not be able to find a match.  For example,
+the query ``P*R*S*L* TOMATOES'' will not match the entity ``Private
+Select Tomatoes'', since wildcards are only matched against single
+terms: ``P*R*S*L*'' matches neither ``Private'' or ``Select''.
 
 \subsection{Mashed Wildcards}
 
-Blah blah blah
+To attempt to solve the multi-word abbreviation problem, we introduced
+a new field into the indexed documents, called ``mashed\_terms''.  This
+field concatenates all terms into a set of mashed
+terms, allowing each word in the set to serve as the prefix of the
+mashed term.  For example, the terms ``the quick brown'' would
+be rewritten into the mashed\_terms field as ``thequickbrown quickbrown
+brown''.  This approach matches multi-word abbreviations.  For example
+``P*R*S*L*'' will now match ``privateselect''.  Using the Mashed
+Wildcards approach, accuracy improves to .884. 
 
 \subsection{Phrases}
 
-Blah blah blah
+Examination of errors using the Mashed Wildcard technique reveals that
+mashing terms results in some strange false positives.
+For example,``OCEANS HALO BROTH'' matches ``Pero Organic Green Beans''
+This is due to the fact that the non-dictionary term ``OCEANS''
+matches the mashed term ``OrganiCgreenbEANS '' (caps indicate matching
+characters).  This type error suggests that we should be more
+selective when generating mashed terms.  Ideally, we would like to
+curate semanticially meaningful phrases instead of long, arbitrary
+sequences of words.  To do this, we can analyze the entity labels and
+identify strongly collocated bigrams and trigrams, and use
+concatenated versions of those instead of mashed terms.
+
+An information-theoretically motivated measure for discovering
+intersting collocations is {\em Pointwise Mutual Information}~\cite{manning:1999}
+
+\begin{equation}
+\begin{split}
+  \label{eq:pmi}
+  I(x^\prime,y^\prime) = log_2\frac{P(x^\prime,y^\prime)}{ P(x^\prime)P(y^\prime) } \\
+  = log_2\frac{P(x^\prime|y^\prime)}{ P(x^\prime) } \\
+  = log_2\frac{P(y^\prime|x^\prime)}{ P(y^\prime) } \\
+\end{split}
+\end{equation}
+
+Using this technique, we generate a list of semantically significant
+bigrams and trigrams.  For example, the top 10 detected bigrams are:
+\begin{myitemize}
+\item advanced whitening
+\item alfaros artesano
+\item alfresco pasture-raised
+\item ang chck
+\item antipasto italiano
+\item arm hammer
+\item arrabbiata fra
+\item aretsano bakery
+\item athenos crumbled
+\item atkins endulge
+\end{myitemize}
+And the top 10 trigrams are
+\begin{myitemize}
+\item alfaros artesano bakery
+\item ang chck ptty
+\item antipasto italiano wildbrine
+\item arm hammer peroxi
+\item arrabbiata fra diavolo
+\item artesano bakery bun
+\item atkins endulge chocolate
+\item bagel sesame bagels
+\item bagels zia italiana
+\item bf ang chck
+\end{myitemize}
+Using the ngram technique, we improve accuracy to .899
 
 \subsection{Fuzzy Phrases}
+It turns out that abbreviations are not the only match problem that we
+need to contend with.  Sometimes raw representations are represented
+as plural, whereas the web representations are represented as
+singluar.  For example, the web representation could be ``artichoke''
+with a corresponding raw representation of ``ARTICHOKES''.  A query
+of ``A*R*T*I*C*H*O*K*E*S*'' will not match ``artichoke''.  To deal
+with this, we introduce fuzzy matching, which will match terms within
+a small edit distance of the query term.  In the above example, the
+query ``ARTICHOKE'' will be rewritten to ``A*R*T*I*C*H*O*K*E*S*
+ARTICHOKES~''.  The second term will correctly match the ``artichoke''
+entity.
 
-Blah blah blah
+Using fuzzy terms in conjunction with ngrams, accuracy improves to
+0.928. 
 
 \section{Results}
 
-blah
+We ran each IR method on an index of all 65 receipts.
+Table \ref{table:results} shows the accuracies for the single receipt and
+all receipt cases.  The results show improve with the introduction of
+each new IR technique.  Unsuprisingly, the results for all receipts is
+lower than that of a single receipt.  This is primarily to do the
+expansion of choices introduced by more data.  Recall that we are
+only judging a hit by looking at the top search result.  It is likely
+that in many examples, the true match is still contained in one of the
+top-k matches, where k is a relatively small number.
+
+\begin{table}[t!]
+\begin{center}
+\begin{tabular}{|l|r|r|}
+\hline \textbf{Technique} & \textbf{Single Receipt} & \textbf{All Receipts} \\ \hline
+Baseline & 0.62 & 0.47 \\
+Wildcard & 0.84 & 0.72 \\
+Mashed & 0.88 & 0.76 \\
+Ngrams & 0.89 & 0.77 \\
+Fuzzy Ngrams & 0.93 & 0.79 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{\label{table:results} Receipt Item Linking Results. }
+\end{table}
+
 
 \section{Future Work}
 
