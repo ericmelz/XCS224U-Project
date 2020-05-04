@@ -56,7 +56,7 @@ applications such as enabling detailed analytics on purchases,
 enforcing expense policies, and inferring patterns of purchase
 behavior on large collections of receipts.  In this paper, we focus on
 the task of Named Entity Linking (NEL) of 
-scanned receipt line items.  Specifically, the task entails
+scanned receipt line items; specifically, the task entails
 associating shorthand text from OCR’d receipts with a knowledge base
 (KB) of grocery products.  For example, the scanned item ``STO BABY
 SPINACH'' should be linked to the catalog item labeled ``Simple Truth
@@ -74,7 +74,7 @@ applications such as enabling detailed analytics on purchases,
 enforcing expense policies, and inferring patterns of purchase
 behavior on large collections of receipts.  In this paper, we focus on
 the task of Named Entity Linking~\cite{Hachey:2012} of
-scanned receipt line items.  Specifically, the task entails
+scanned receipt line items; specifically, the task entails
 associating shorthand text from OCR’d receipts with a knowledge base
 (KB) of grocery products.  For example, the scanned item ``STO BABY
 SPINACH'' should be linked to the catalog item labeled ``Simple Truth
@@ -126,9 +126,9 @@ vectors.  Another approach uses supervised learning, considering
 features such as string similarity and other characteristics of the
 short and long forms.
 
-The author's work is based on previous work by~\cite{JACQUET14.468}
+The authors' work is based on previous work by~\cite{JACQUET14.468}
 who describe a technique for mining abbreviations by making use of
-Wikipedia redirection pages.  The authors observe that, due to the use
+Wikipedia redirection pages.  The authors observe that due to the use
 of only redirect pages for the gold standard annotation, a shortcoming
 of the prior work is that each abbreviation only has a single
 expansion even though multiple different expansions are possible for
@@ -140,7 +140,7 @@ The authors mine redirect and disambiguation pages for abbreviations,
 while applying several rules such as (a) Short forms are restricted to
 ten characters or less, (b) At least half of the short-form characters
 must be upper case, and (c) The long-form must be at least twice as
-long as the short form, with at least two tokens.  They generate
+long as the short form, with at least two tokens; they generate
 candidate expansions and then score the expansions.  Scoring occurs by
 computing features for synonym similarity, topic similarity, and
 surface similarity.  Synonym similarity means that one term can be
@@ -168,7 +168,7 @@ expansions.  They note that abbreviations are heavily used in medical
 literature and documentation.  In notes written by physicians, high
 workloads and time pressure intensify the need for using
 abbreviations.  This is especially true within intensive care
-medicine, where it’s crucial that information is expressed in the most
+medicine, where it's crucial that information is expressed in the most
 time efficient manner to provide time-sensitive care to critically ill
 patients.  Within the arena of medical research, abbreviation
 expansion using NLP can enable knowledge discovery and has the
@@ -190,11 +190,11 @@ produced by having physicians manually expand and normalize the
 handwritten notes.  The authors compare their model against several
 baselines.  For example, one baseline chooses the highest rated
 candidate expansion in the domain specific knowledge base.  Comparing
-accuracy of the author’s system against the baselines results in a
+accuracy of the author's system against the baselines results in a
 50\%+ increase.  For example the rating baseline has an accuracy of 21\%
-and the authors system has an accuracy of 83\%.
+and the author's system has an accuracy of 83\%.
 
-\subsection{Social Media Text Normalization}
+{Social Media Text Normalization}
 ~\cite{Lourentzo:2019} present a Sequence to Sequence (Seq2Seq) model
 for normalizing social media text.  They observe that social media
 texts have an enormous amount of variation, and that text
@@ -206,8 +206,8 @@ such as machine translation, and has promise for text normalization.
 
 The authors frame the task of text normalization as mapping an
 out-of-vocabulary (OOV) non-standard word to an in-vocabulary (IV)
-standard word that preserves the meaning of the sentence.  The non
-standard forms in user generated content include misspellings
+standard word that preserves the meaning of the sentence.  The
+non-standard forms in user generated content include misspellings   
 (defenitely $\rightarrow$ definitely), phonetic substitutions (2morrow $\rightarrow$
 tomorrow), shortening (convo $\rightarrow$ conversation), acronyms (idk $\rightarrow$ i don’t
 know), slang (``low key'', ``woke''), emphasis (coooool $\rightarrow$ cool), and
