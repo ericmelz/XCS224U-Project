@@ -331,7 +331,7 @@ queries, phrase detection, etc.
 
 \section{Experiments}
 
-In fhte following sections, we report a series of experiments that
+In the following sections, we report a series of experiments that
 leverage Lucene.  We index the web versions of entities and query the
 index with the raw line items derived from scanned receipts.
 
@@ -375,7 +375,7 @@ The first experiment used out-of-the-box Lucene.  This setup tokenized
 the index and queries using the $StandardAnalyzer$, which does
 superficial processing on terms such as lowercasing them.
 
-Using this approach, we acheive an accuracy of 0.623.
+Using this approach, we acheive an accuracy of 0.63.
 This basic approach is capable of matching entities with identical
 scanned representations, but falls short when the scanned
 representation contains abbreviations.  For example, the
@@ -399,7 +399,7 @@ term, and 0 otherwise.  Hence, a query with 3 wildcard terms and two
 matches would receive a score of exactly 2.0.
 
 Using the wildcard technique, we boost the accuracy to 0.841, a
-substantial improvement of the baseline of 0.623.  The wildcard
+substantial improvement of the baseline of 0.63.  The wildcard
 approach does seem to make some progress towards solving the
 abbreviation problem, however, there are still cases where this simple
 approach fails.  For example, if an abbreviation spans multiple terms,
@@ -418,7 +418,7 @@ mashed term.  For example, the terms ``the quick brown'' would
 be rewritten into the mashed\_terms field as ``thequickbrown quickbrown
 brown''.  This approach matches multi-word abbreviations.  For example
 ``P*R*S*L*'' will now match ``privateselect''.  Using the Mashed
-Wildcards approach, accuracy improves to .884. 
+Wildcards approach, accuracy improves to .88. 
 
 \subsection{Phrases}
 
@@ -473,7 +473,7 @@ And the top 10 trigrams are
 \item bagels zia italiana
 \item bf ang chck
 \end{myitemize}
-Using the ngram technique, we improve accuracy to .899
+Using the ngram technique, we improve accuracy to .90
 
 \subsection{Fuzzy Phrases}
 It turns out that abbreviations are not the only match problem that we
@@ -489,7 +489,7 @@ ARTICHOKES~''.  The second term will correctly match the ``artichoke''
 entity.
 
 Using fuzzy terms in conjunction with ngrams, accuracy improves to
-0.928. 
+0.93. 
 
 \section{Results}
 
@@ -518,27 +518,97 @@ Fuzzy Ngrams & 0.93 & 0.79 \\
 \caption{\label{table:results} Receipt Item Linking Results. }
 \end{table}
 
+\section{Synonym Expansion}
+We explored the possibility that synonym expansion of queries
+could produce enhanced accuracies.  The thinking is that by
+generating synonyms of the raw forms, recall of the web forms
+could be improved.  For example a synonym of ``avocado'' is
+``avocados'' and such an expansion could improve accuracy without
+using fuzzy matching.  Similarly, a closely related word to
+``cheddar'' is ``cheese'' and such a synonym expansion could be
+potentially beneficial.
+
+We explored the possibility of synonym expansion using
+word2vec~\cite{NIPS2013_5021}.  First, we trained word2vec on our web
+phrases and informally tested it by generating similar words for
+various words of interest.  The results of these experiments were
+not particularly promising.  For example, generating similar words for
+``cheese'' produces
+\begin{myitemize}
+\item feast
+\item french
+\item smoked
+\item beyond
+\item grade
+\item ground
+\item wet
+\item hot
+\end{myitemize}  
+
+The results indicate that using word2vec with our current receipt
+dataset will not produce very good synonyms.  This could be due
+to the small size of the dataset and the limited context that
+entity descriptions provide.
+
+Another thing we tried is training word2vec on the Brown
+Corpus~\cite{francis79browncorpus}, and anectodally examining
+similarity.  This produced similarly poor results.  For example,
+querying on ``cheese/nn'' produces
+\begin{myitemize}
+\item lime/nn
+\item editors/nn
+\item vivid/jj
+\item jokes/nn
+\item grapes/nn
+\item uneven/jj
+\item corn/nn
+\item loose/jj
+\item brutal/jj
+\end{myitemize}  
+
+Although it's possible that filtering results to only nouns could
+produce better results, the fact that ``editors'', ``grapes'' and
+``corn'' are considered related to ``cheese'' does not inspire a lot
+of hope for this approach.
 
 \section{Future Work}
 
-blah
+Our experiments show that Named Entity Linking (NEL) on scanned
+receipts can be effectively tackled by employing a variety of
+off-the-shelf Information Retrieval (IR) techniques.  Using
+successive optimization in our approach, we improved accuracy from a
+baseline of 0.47 to 0.79, a 68\% improvement.
+
+One thing to note about our approach is that it is heavily reliant
+on lexical features of the text and pays little attention to the
+actual semantics of the terms in our domain.  Future explorations
+should focus on techniques for effective synonym expansions,
+possibly using resources such as WordNet~\cite{wordnet} or other
+domain-specific lexicons.  It is also possible that training
+word2vec with a sufficiently large receipt dataset or related
+resources could produce reasonably accurate similarity dictionaries.
+
+Note that some matches are particularly challenging and would
+require a deep knowledge about the receipt domain.  For example,
+the surface form ``CA REDEM VAL'' should be matched to the entity 
+``CRV DEPOSIT''.  While there is no surface similarity between these
+two expressions, they both refer to recycling deposits.  A deeper
+analysis of terms, phrases and their meanings could prove beneficial
+in cases such as this.
+
+Another possibility is that neural Seq2Seq models could be used to
+``rewrite'' raw queries into their final entity forms.  This problem
+resembles machine translation.  The main impediment to this approach
+is the amount of data that is need to produce quality results.
 
 \section{Conclusion}
-
-blah
+Named Entity Linking of scanned receipt data is an important problem
+with many potential applications.  Using a variety of IR techniques,
+we are able to obtain a 68\% improvement in accuracy over a baseline
+system.   Future work includes exploring the possibility of leveraging
+neural models to improve semantic matching capabilities of the system.
 
 \bibliography{receipt_nlu}
 \bibliographystyle{acl_natbib}
-
-\appendix
-
-\section{Appendices}
-\label{sec:appendix}
-
-blah 
-
-\section{Supplemental Material}
-\label{sec:supplemental}
-blah blah blah
 
 \end{document}
