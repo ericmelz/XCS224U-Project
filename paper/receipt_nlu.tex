@@ -126,7 +126,7 @@ vectors.  Another approach uses supervised learning, considering
 features such as string similarity and other characteristics of the
 short and long forms.
 
-The author’s work is based on previous work by~\cite{JACQUET14.468}
+The author's work is based on previous work by~\cite{JACQUET14.468}
 who describe a technique for mining abbreviations by making use of
 Wikipedia redirection pages.  The authors observe that, due to the use
 of only redirect pages for the gold standard annotation, a shortcoming
@@ -282,7 +282,7 @@ the web page and can be used as a succinct identifier for the entity.
 \label{fig:json}
 \end{figure}
 
-The dataset consists of 65 scraped receipts, producing 711 non-unique line
+The dataset consists of 65 scraped receipts, producing 711 non-unique
 line items, and 296 unique line items.  All data and code for these
 experiments are available on Github~\cite{github}.
 
@@ -296,13 +296,13 @@ are the classes.  An alternative metric would be to use a
 macro-average F\textsubscript{1} score, but this is overkill for this specific
 experiment setup since there is a uniform distribution across classes:
 each class is represented by exactly one test instance. 
-To be concrete, here’s an example.  Suppose we have the following 2
+For example, suppose we have the following two
 unique mentions: 
 \begin{myitemize}
 \item BRHD CHEESE
 \item AVOCADO
 \end{myitemize}
-Further suppose that the entity for BRHD CHEESE was correctly
+Further, suppose that the entity for BRHD CHEESE was correctly
 predicted as “Boar's Head Monterey Jack with Jalapeno Pre-Sliced
 Cheese”, and the prediction for AVOCADO yielded nothing.  The first
 prediction is a ``hit'' and the second is a ``miss''.  Dividing the
@@ -313,7 +313,7 @@ Note that the mention representations contain
 much less information than the entity labels.  In the above example,
 BRHD CHEESE is matched with  ``Boar's Head Monterey Jack with Jalapeno
 Pre-Sliced Cheese'', but also could have been matched to  ``Boar's
-Head Spicy Cheddar Cheese'', or a number of other types of Boar’s Head
+Head Spicy Cheddar Cheese'', or a number of other types of Boar's Head
 cheese.  To account for this ambiguity, a prediction is counted as a
 “hit” if it is any of the possible resolutions of the product mention.
 In the previous example, both of the long descriptions would be
@@ -325,7 +325,7 @@ Information Retrieval.   A baseline model indexes entity labels using the Lucene
 engine.  Lucene provides a toolkit of tokenizers and token analyzers,
 enabling many strategies for matching text.  The most basic setup uses
 strict matching on tokens, providing a good baseline model.
-Subsequent experiments tune of the by selecting more
+Subsequent experiments improve accuracy by selecting more
 sophisticated IR and NLP techniques such as using wildcard
 queries, phrase detection, etc.
 
@@ -351,14 +351,15 @@ score(D,Q) = \sum_{i=1}^{n} IDF(q_i) \cdot \\
 
 where $f(q_i, D)$ is $q_i$'s term frequency in the document $D$, $|D|$
 is the length of the document $D$ in words,
-$IDF$ is inverse document frequency, calculated as $log(1 + (N - n + 0.5) / (n + 0.5))$, 
-where $n$ is the number of documents that $q_i$ appears in, and $N$
-is the total number of documents,
 and $avgdl$ is the average
 document length in the text collection from which documents are
-drawn. $k_1$ and $b$ are free parameters.  $k_1$ represents a term
+drawn.
+$IDF$ is the inverse document frequency, calculated as $log(1 + (N - n + 0.5) / (n + 0.5))$, 
+where $n$ is the number of documents that $q_i$ appears in, and $N$
+is the total number of documents.
+$k_1$ and $b$ are free parameters.  $k_1$ represents a term
 saturation parameter, controlling the equation's senstivitiy to
-incrementally increasing term frequencies, and $b$ is a length
+incremental increases of term frequencies, and $b$ is a length
 normalization parameter, controlling the equation's sensitivity
 to the length of a phrase.  For the experiments reported in this
 paper, $k_1 = 1.2$ and $b = 0.75$.
@@ -392,13 +393,13 @@ scanned representation, we eliminate all words that are present in the
 dictionary.  For the remaining terms, we rewrite those terms to match
 indexed terms that contain all the letters in the raw terms.  For
 example, the term ``KRO'' will be rewritten as in the query as
-``K*R*O*`` and hence match ``Kroger``.  Note that in Lucene, wildcard
+``K*R*O*'' and hence match ``Kroger''.  Note that in Lucene, wildcard
 matches do not use term frequency or inverse document frequency but
 count as 1.0 if there is a match between the wildcard and some indexed
 term, and 0 otherwise.  Hence, a query with 3 wildcard terms and two
 matches would receive a score of exactly 2.0.
 
-Using the wildcard technique, we boost the accuracy to 0.841, a
+Using the wildcard technique, we boost the accuracy to 0.84, a
 substantial improvement of the baseline of 0.63.  The wildcard
 approach does seem to make some progress towards solving the
 abbreviation problem, however, there are still cases where this simple
@@ -427,7 +428,7 @@ mashing terms results in some strange false positives.
 For example,``OCEANS HALO BROTH'' matches ``Pero Organic Green Beans''
 This is due to the fact that the non-dictionary term ``OCEANS''
 matches the mashed term ``OrganiCgreenbEANS '' (caps indicate matching
-characters).  This type error suggests that we should be more
+characters).  This type of error suggests that we should be more
 selective when generating mashed terms.  Ideally, we would like to
 curate semanticially meaningful phrases instead of long, arbitrary
 sequences of words.  To do this, we can analyze the entity labels and
@@ -446,6 +447,7 @@ intersting collocations is {\em Pointwise Mutual Information}~\cite{manning:1999
 \end{split}
 \end{equation}
 
+Here, $x^\prime$ and $y^\prime$ represents two terms of interest.
 Using this technique, we generate a list of semantically significant
 bigrams and trigrams.  For example, the top 10 detected bigrams are:
 \begin{myitemize}
@@ -477,7 +479,7 @@ Using the ngram technique, we improve accuracy to .90
 
 \subsection{Fuzzy Phrases}
 It turns out that abbreviations are not the only match problem that we
-need to contend with.  Sometimes raw representations are represented
+need to contend with.  Sometimes, raw representations are represented
 as plural, whereas the web representations are represented as
 singluar.  For example, the web representation could be ``artichoke''
 with a corresponding raw representation of ``ARTICHOKES''.  A query
@@ -485,7 +487,7 @@ of ``A*R*T*I*C*H*O*K*E*S*'' will not match ``artichoke''.  To deal
 with this, we introduce fuzzy matching, which will match terms within
 a small edit distance of the query term.  In the above example, the
 query ``ARTICHOKE'' will be rewritten to ``A*R*T*I*C*H*O*K*E*S*
-ARTICHOKES~''.  The second term will correctly match the ``artichoke''
+ARTICHOKES\textasciitilde''.  The second term will correctly match the ``artichoke''
 entity.
 
 Using fuzzy terms in conjunction with ngrams, accuracy improves to
@@ -495,9 +497,9 @@ Using fuzzy terms in conjunction with ngrams, accuracy improves to
 
 We ran each IR method on an index of all 65 receipts.
 Table \ref{table:results} shows the accuracies for the single receipt and
-all receipt cases.  The results show improve with the introduction of
+all receipt cases.  The results show improvement with the introduction of
 each new IR technique.  Unsuprisingly, the results for all receipts is
-lower than that of a single receipt.  This is primarily to do the
+lower than that of a single receipt.  This is primarily due to the
 expansion of choices introduced by more data.  Recall that we are
 only judging a hit by looking at the top search result.  It is likely
 that in many examples, the true match is still contained in one of the
@@ -520,7 +522,7 @@ Fuzzy Ngrams & 0.93 & 0.79 \\
 
 \section{Synonym Expansion}
 We explored the possibility that synonym expansion of queries
-could produce enhanced accuracies.  The thinking is that by
+could produce enhanced accuracies.  The intuition is that by
 generating synonyms of the raw forms, recall of the web forms
 could be improved.  For example a synonym of ``avocado'' is
 ``avocados'' and such an expansion could improve accuracy without
@@ -532,7 +534,7 @@ We explored the possibility of synonym expansion using
 word2vec~\cite{NIPS2013_5021}.  First, we trained word2vec on our web
 phrases and informally tested it by generating similar words for
 various words of interest.  The results of these experiments were
-not particularly promising.  For example, generating similar words for
+not promising.  For example, generating similar words for
 ``cheese'' produces
 \begin{myitemize}
 \item feast
@@ -576,7 +578,7 @@ of hope for this approach.
 Our experiments show that Named Entity Linking (NEL) on scanned
 receipts can be effectively tackled by employing a variety of
 off-the-shelf Information Retrieval (IR) techniques.  Using
-successive optimization in our approach, we improved accuracy from a
+successive optimizations in our approach, we improved accuracy from a
 baseline of 0.47 to 0.79, a 68\% improvement.
 
 One thing to note about our approach is that it is heavily reliant
